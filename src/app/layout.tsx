@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { QueryProvider } from '@/components/query-provider';
 import { Suspense } from 'react';
+import ThemeProvider from '@/theme/theme-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,20 +26,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
         <QueryProvider>
-          <Suspense
-            fallback={
-              <div className="flex items-center justify-center h-screen">
-                Loading...
-              </div>
-            }
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
           >
-            {children}
-          </Suspense>
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center h-screen">
+                  Loading...
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
+          </ThemeProvider>
         </QueryProvider>
       </body>
     </html>

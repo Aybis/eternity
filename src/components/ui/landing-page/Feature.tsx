@@ -5,11 +5,13 @@ export default function Feature() {
   return (
     <section
       id="features"
-      className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 dark:bg-zinc-950"
     >
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold mb-4">Your Digital Life Monument</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 dark:text-zinc-50">
+          Your Digital Life Monument
+        </h2>
+        <p className="text-xl text-zinc-600 dark:text-zinc-200 max-w-3xl mx-auto">
           Eternity Chain combines cutting-edge AI and blockchain technology to
           preserve your authentic self for generations to come.
         </p>

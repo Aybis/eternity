@@ -3,10 +3,15 @@ import { FaqItem } from '../HelperComponents';
 
 export default function Faq() {
   return (
-    <section id="faq" className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="faq"
+      className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 dark:bg-zinc-950"
+    >
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 text-zinc-900 dark:text-zinc-50">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-xl text-zinc-600 dark:text-zinc-200 max-w-3xl mx-auto">
           Everything you need to know about preserving your legacy
         </p>
       </div>

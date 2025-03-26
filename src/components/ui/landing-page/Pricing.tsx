@@ -5,11 +5,13 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 dark:bg-zinc-950"
     >
       <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold mb-4">Simple, Transparent Pricing</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 text-zinc-900 dark:text-zinc-50">
+          Simple, Transparent Pricing
+        </h2>
+        <p className="text-xl text-zinc-60 dark:text-zinc-200 max-w-3xl mx-auto">
           Invest in your digital immortality with our flexible pricing options
         </p>
       </div>

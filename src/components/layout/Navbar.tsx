@@ -1,14 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import ThemeToggle from '@/theme/theme-toggle';
+import { useState } from 'react';
 import { MobileNavLink, NavLink } from '../ui/HelperComponents';
-import useDarkMode from '@/hooks/useDarkMode';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <nav className="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <nav className="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm dark:bg-zinc-950 dark:border-zinc-700">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Menu Content  */}
         <div className="flex justify-between items-center h-16">
@@ -17,7 +16,9 @@ export default function Navbar() {
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center text-white font-medium text-sm">
               EC
             </div>
-            <span className="ml-2 text-lg font-medium">Eternity Chain</span>
+            <span className="ml-2 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              Eternity Chain
+            </span>
           </div>
 
           {/* Menu Navigation */}
@@ -33,20 +34,14 @@ export default function Navbar() {
             <button className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm hover:from-purple-700 hover:to-indigo-700 transition-colors">
               Get Started
             </button>
-            <button
-              onClick={toggleDarkMode}
-              className="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm transition-colors"
-              disabled={darkMode === null}
-            >
-              {darkMode ? 'Light Mode' : 'Dark Mode'}
-            </button>
+            <ThemeToggle />
           </div>
 
           {/* Menu Hamburger */}
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-400"
+              className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-400"
             >
               <svg
                 className="h-6 w-6"
@@ -72,7 +67,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-2 transition-colors duration-300">
+        <div className="md:hidden bg-white dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700 py-2 transition-colors duration-300">
           <div className="px-4 pt-2 pb-3 space-y-1">
             <MobileNavLink href="#features">Features</MobileNavLink>
             <MobileNavLink href="#how-it-works">How It Works</MobileNavLink>
@@ -85,13 +80,7 @@ export default function Navbar() {
               <button className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm">
                 Get Started
               </button>
-              <button
-                onClick={toggleDarkMode}
-                className="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm transition-colors"
-                disabled={darkMode === null}
-              >
-                {darkMode ? 'Light Mode' : 'Dark Mode'}
-              </button>
+              <ThemeToggle />
             </div>
           </div>
         </div>

@@ -1,14 +1,12 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-
-// Helper Components
 import { ReactNode } from 'react';
 
 const NavLink = ({ href, children }: { href: string; children: ReactNode }) => (
   <Link
     href={href}
-    className="text-gray-600 hover:text-purple-600 font-medium text-sm transition-colors"
+    className="text-zinc-600 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium text-sm transition-colors"
   >
     {children}
   </Link>
@@ -23,7 +21,7 @@ const MobileNavLink = ({
 }) => (
   <Link
     href={href}
-    className="block py-2 text-gray-600 hover:text-purple-600 font-medium text-sm"
+    className="block py-2 text-zinc-600 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium text-sm"
   >
     {children}
   </Link>
@@ -38,10 +36,12 @@ const FeatureCard = ({
   title: string;
   description: string;
 }) => (
-  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all">
+  <div className="bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-sm border border-zinc-100 dark:border-zinc-700 hover:shadow-md transition-all">
     <div className="text-4xl mb-4">{icon}</div>
-    <h3 className="text-lg font-semibold mb-2">{title}</h3>
-    <p className="text-gray-600 text-sm">{description}</p>
+    <h3 className="text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-200">
+      {title}
+    </h3>
+    <p className="text-zinc-600 dark:text-zinc-400 text-sm">{description}</p>
   </div>
 );
 
@@ -58,8 +58,10 @@ const StepCard = ({
     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold mb-4">
       {number}
     </div>
-    <h3 className="text-lg font-semibold mb-2">{title}</h3>
-    <p className="text-gray-600 text-sm">{description}</p>
+    <h3 className="text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-200">
+      {title}
+    </h3>
+    <p className="text-zinc-600 dark:text-zinc-400 text-sm">{description}</p>
   </div>
 );
 
@@ -79,19 +81,25 @@ const PricingCard = ({
   highlighted?: boolean;
 }) => (
   <div
-    className={`bg-white rounded-xl p-6 border ${
-      highlighted ? 'border-purple-200 shadow-md' : 'border-gray-200 shadow-sm'
+    className={`bg-white dark:bg-zinc-800 rounded-xl p-6 border ${
+      highlighted
+        ? 'border-purple-200 dark:border-purple-400 shadow-md'
+        : 'border-zinc-200 dark:border-zinc-700 shadow-sm'
     } relative`}
   >
     {highlighted && (
-      <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-purple-100 text-purple-700 text-xs font-medium py-1 px-2 rounded-full">
+      <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100 text-xs font-medium py-1 px-2 rounded-full">
         Most Popular
       </div>
     )}
-    <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <h3 className="text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-200">
+      {title}
+    </h3>
     <div className="mb-6">
-      <span className="text-3xl font-bold">{price}</span>
-      <span className="text-gray-500 text-sm">{period}</span>
+      <span className="text-3xl font-bold text-zinc-800 dark:text-zinc-200">
+        {price}
+      </span>
+      <span className="text-zinc-500 dark:text-zinc-400 text-sm">{period}</span>
     </div>
     <ul className="space-y-3 mb-6">
       {features.map((feature, index) => (
@@ -109,7 +117,9 @@ const PricingCard = ({
               d="M5 13l4 4L19 7"
             />
           </svg>
-          <span className="text-sm text-gray-600">{feature}</span>
+          <span className="text-sm text-zinc-600 dark:text-zinc-400">
+            {feature}
+          </span>
         </li>
       ))}
     </ul>
@@ -117,7 +127,7 @@ const PricingCard = ({
       className={`w-full py-2 rounded-lg text-sm font-medium transition-colors ${
         highlighted
           ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700'
-          : 'border border-purple-600 text-purple-600 hover:bg-purple-50'
+          : 'border border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900'
       }`}
     >
       {buttonText}
@@ -136,17 +146,19 @@ const TestimonialCard = ({
   title: string;
   initial: string;
 }) => (
-  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+  <div className="bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-sm border border-zinc-100 dark:border-zinc-700">
     <div className="flex items-center mb-4">
-      <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-sm mr-3">
+      <div className="h-10 w-10 rounded-full bg-purple-100 dark:bg-purple-700 flex items-center justify-center text-purple-600 dark:text-purple-100 font-bold text-sm mr-3">
         {initial}
       </div>
       <div>
-        <h4 className="font-semibold text-sm">{name}</h4>
-        <p className="text-gray-500 text-xs">{title}</p>
+        <h4 className="font-semibold text-sm text-zinc-800 dark:text-zinc-200">
+          {name}
+        </h4>
+        <p className="text-zinc-500 dark:text-zinc-400 text-xs">{title}</p>
       </div>
     </div>
-    <p className="text-gray-600 text-sm">{quote}</p>
+    <p className="text-zinc-600 dark:text-zinc-400 text-sm">{quote}</p>
     <div className="mt-4 flex text-yellow-400">
       {[...Array(5)].map((_, i) => (
         <svg
@@ -172,14 +184,14 @@ const FaqItem = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+    <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-sm overflow-hidden border border-zinc-100 dark:border-zinc-800">
       <button
-        className="w-full px-6 py-4 text-left font-medium text-gray-800 focus:outline-none flex justify-between items-center"
+        className="w-full px-6 py-4 text-left font-semibold text-zinc-700 dark:text-zinc-100 focus:outline-none flex justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{question}</span>
         <svg
-          className={`h-5 w-5 text-gray-500 transform transition-transform ${
+          className={`h-5 w-5 text-zinc-500 dark:text-zinc-400 transform transition-transform ${
             isOpen ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -199,7 +211,9 @@ const FaqItem = ({
           isOpen ? 'max-h-96 pb-4' : 'max-h-0'
         }`}
       >
-        <p className="text-gray-600 text-sm">{answer}</p>
+        <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
+          {answer}
+        </p>
       </div>
     </div>
   );
