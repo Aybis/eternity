@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { QueryProvider } from '@/components/query-provider';
+import { Suspense } from 'react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,9 +27,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black transition-colors duration-300`}
       >
-        {children}
+        <QueryProvider>
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center h-screen">
+                Loading...
+              </div>
+            }
+          >
+            {children}
+          </Suspense>
+        </QueryProvider>
       </body>
     </html>
   );
