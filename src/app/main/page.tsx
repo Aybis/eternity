@@ -1,19 +1,44 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const EternityChainLanding = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedPreference = localStorage.getItem('theme');
+    if (storedPreference) {
+      setIsDarkMode(storedPreference === 'dark');
+    } else {
+      setIsDarkMode(userPrefersDark);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans w-full">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-200' : 'bg-white text-gray-800'} font-sans w-full`}>
       {/* Navigation */}
-      <nav className="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm">
+      <nav className={`fixed w-full ${isDarkMode ? 'bg-gray-800' : 'bg-white'} bg-opacity-95 backdrop-blur-sm z-50 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-100'} shadow-sm`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center text-white font-medium text-sm">
+              <div className={`w-8 h-8 rounded-full ${isDarkMode ? 'bg-gradient-to-r from-purple-600 to-indigo-600' : 'bg-gradient-to-r from-purple-600 to-indigo-600'} flex items-center justify-center text-white font-medium text-sm`}>
                 EC
               </div>
               <span className="ml-2 text-lg font-medium">Eternity Chain</span>
@@ -29,6 +54,12 @@ const EternityChainLanding = () => {
               </button>
               <button className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm hover:from-purple-700 hover:to-indigo-700 transition-colors">
                 Get Started
+              </button>
+              <button
+                onClick={toggleDarkMode}
+                className="ml-4 px-4 py-2 rounded-md bg-gray-100 text-gray-800 font-medium text-sm hover:bg-gray-200 transition-colors"
+              >
+                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
               </button>
             </div>
 
@@ -61,7 +92,7 @@ const EternityChainLanding = () => {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-gray-200 py-2">
+          <div className={`md:hidden ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'} py-2`}>
             <div className="px-4 pt-2 pb-3 space-y-1">
               <MobileNavLink href="#features">Features</MobileNavLink>
               <MobileNavLink href="#how-it-works">How It Works</MobileNavLink>
@@ -74,6 +105,12 @@ const EternityChainLanding = () => {
                 <button className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm">
                   Get Started
                 </button>
+                <button
+                  onClick={toggleDarkMode}
+                  className="px-4 py-2 rounded-md bg-gray-100 text-gray-800 font-medium text-sm"
+                >
+                  {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+                </button>
               </div>
             </div>
           </div>
@@ -84,14 +121,14 @@ const EternityChainLanding = () => {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 mb-6">
+            <h1 className={`text-4xl md:text-5xl font-bold leading-tight ${isDarkMode ? 'text-gray-200' : 'text-gray-900'} mb-6`}>
               Immortalize Your Legacy with
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">
                 {' '}
                 AI + Web3
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-8`}>
               Turn your life memories into a living, interactive AI bound
               forever on the blockchain.
             </p>
@@ -120,9 +157,9 @@ const EternityChainLanding = () => {
       </section>
 
       {/* Trust Indicators */}
-      <section className="py-10 bg-gray-50">
+      <section className={`py-10 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-gray-500 text-sm">
+          <div className={`flex flex-wrap justify-center gap-8 md:gap-16 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'} text-sm`}>
             <div className="flex items-center">
               <span className="font-semibold text-purple-600 mr-2">500+</span>{' '}
               Digital Legacies Created
@@ -150,7 +187,7 @@ const EternityChainLanding = () => {
           <h2 className="text-3xl font-bold mb-4">
             Your Digital Life Monument
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} max-w-3xl mx-auto`}>
             Eternity Chain combines cutting-edge AI and blockchain technology to
             preserve your authentic self for generations to come.
           </p>
@@ -176,13 +213,13 @@ const EternityChainLanding = () => {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 bg-gray-50">
+      <section id="how-it-works" className={`py-20 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">
               How Eternity Chain Works
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} max-w-3xl mx-auto`}>
               Three simple steps to create your living digital legacy
             </p>
           </div>
@@ -216,7 +253,7 @@ const EternityChainLanding = () => {
           <h2 className="text-3xl font-bold mb-4">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} max-w-3xl mx-auto`}>
             Invest in your digital immortality with our flexible pricing options
           </p>
         </div>
@@ -262,11 +299,11 @@ const EternityChainLanding = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-gray-50">
+      <section className={`py-20 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">What Our Users Say</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} max-w-3xl mx-auto`}>
               Real experiences from people preserving their legacy with Eternity
               Chain
             </p>
@@ -306,7 +343,7 @@ const EternityChainLanding = () => {
           <h2 className="text-3xl font-bold mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className={`text-xl ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} max-w-3xl mx-auto`}>
             Everything you need to know about preserving your legacy
           </p>
         </div>
@@ -363,12 +400,12 @@ const EternityChainLanding = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-gray-900 text-gray-400">
+      <footer className={`py-12 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-900'} text-gray-400`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-medium text-sm">
+                <div className={`w-8 h-8 rounded-full ${isDarkMode ? 'bg-purple-600' : 'bg-purple-600'} flex items-center justify-center text-white font-medium text-sm`}>
                   EC
                 </div>
                 <span className="ml-2 text-lg font-medium text-white">

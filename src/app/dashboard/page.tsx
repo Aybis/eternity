@@ -13,17 +13,17 @@ import Image from 'next/image';
 
 export default function Dashboard() {
   return (
-    <div className="relative bg-zinc-100 box-content flex h-screen overflow-hidden">
+    <div className="relative bg-zinc-100 dark:bg-gray-900 box-content flex h-screen overflow-hidden">
       {/* Sidebar */}
-      <aside className="absolute ml-4 w-12 z-20 bg-white/20 backdrop-blur-sm inset-y-0 my-6 rounded-lg p-4 text-zinc-800 shadow-lg shadow-zinc-200 hover:w-48 box-content transition-all duration-500">
+      <aside className="absolute ml-4 w-12 z-20 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm inset-y-0 my-6 rounded-lg p-4 text-zinc-800 dark:text-gray-200 shadow-lg shadow-zinc-200 dark:shadow-gray-700 hover:w-48 box-content transition-all duration-500">
         <div className="flex flex-col">
-          <div className="p-1.5 flex items-center gap-3 overflow-hidden w-full hover:bg-zinc-200/70 transition-all duration-500 rounded-lg">
-            <div className="rounded-lg bg-zinc-300 flex-none flex justify-center items-center w-10 h-10 ">
+          <div className="p-1.5 flex items-center gap-3 overflow-hidden w-full hover:bg-zinc-200/70 dark:hover:bg-gray-700/70 transition-all duration-500 rounded-lg">
+            <div className="rounded-lg bg-zinc-300 dark:bg-gray-700 flex-none flex justify-center items-center w-10 h-10 ">
               <h1 className="font-semibold text-3xl">M</h1>
             </div>
             <div className="flex-col gap-y-0.5 flex-1">
-              <p className="font-semibold text-zinc-800 text-nowrap">Muchtar</p>
-              <p className="font-light text-zinc-700 text-nowrap">Free plan</p>
+              <p className="font-semibold text-zinc-800 dark:text-gray-200 text-nowrap">Muchtar</p>
+              <p className="font-light text-zinc-700 dark:text-gray-400 text-nowrap">Free plan</p>
             </div>
             <ChevronDownIcon className="w-6 h-6" />
           </div>
@@ -31,57 +31,57 @@ export default function Dashboard() {
           {/* Menu  */}
           <nav className="mt-6 overflow-hidden flex flex-col gap-y-4">
             <ul className="overflow-hidden flex flex-col gap-y-4">
-              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 bg-zinc-50">
+              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-gray-700/60 bg-zinc-50 dark:bg-gray-800">
                 <span>
                   <HomeIcon className="w-8 h-8" />
                 </span>
-                <p className="font-semibold text-zinc-800">Home</p>
+                <p className="font-semibold text-zinc-800 dark:text-gray-200">Home</p>
               </li>
             </ul>
-            <hr className="mx-1.5 border-zinc-300 " />
+            <hr className="mx-1.5 border-zinc-300 dark:border-gray-600" />
             <ul className="overflow-hidden flex flex-col gap-y-4">
-              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 ">
+              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-gray-700/60">
                 <span>
-                  <PersonIcon className="w-8 h-8 text-zinc-500" />
+                  <PersonIcon className="w-8 h-8 text-zinc-500 dark:text-gray-400" />
                 </span>
-                <p className="font-semibold text-zinc-800">Agents</p>
+                <p className="font-semibold text-zinc-800 dark:text-gray-200">Agents</p>
               </li>
-              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 ">
+              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-gray-700/60">
                 <span>
-                  <CardStackIcon className="w-8 h-8 text-zinc-500" />
+                  <CardStackIcon className="w-8 h-8 text-zinc-500 dark:text-gray-400" />
                 </span>
-                <p className="font-semibold text-zinc-800">Agent Marketplace</p>
+                <p className="font-semibold text-zinc-800 dark:text-gray-200">Agent Marketplace</p>
               </li>
             </ul>
-            <hr className="mx-1.5 border-zinc-300 " />
+            <hr className="mx-1.5 border-zinc-300 dark:border-gray-600" />
             <ul className="overflow-hidden flex flex-col gap-y-4">
-              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60">
+              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-gray-700/60">
                 <span>
-                  <ReaderIcon className="w-8 h-8 text-zinc-500" />
+                  <ReaderIcon className="w-8 h-8 text-zinc-500 dark:text-gray-400" />
                 </span>
-                <p className="font-semibold text-zinc-800">Knowledge Base</p>
+                <p className="font-semibold text-zinc-800 dark:text-gray-200">Knowledge Base</p>
               </li>
-              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60">
+              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-gray-700/60">
                 <span>
-                  <MixIcon className="w-8 h-8 text-zinc-500" />
+                  <MixIcon className="w-8 h-8 text-zinc-500 dark:text-gray-400" />
                 </span>
-                <p className="font-semibold text-zinc-800">Models</p>
+                <p className="font-semibold text-zinc-800 dark:text-gray-200">Models</p>
               </li>
-              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60">
+              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-gray-700/60">
                 <span>
-                  <LinkBreak2Icon className="w-8 h-8 text-zinc-500" />
+                  <LinkBreak2Icon className="w-8 h-8 text-zinc-500 dark:text-gray-400" />
                 </span>
-                <p className="font-semibold text-zinc-800">Data Connectors</p>
+                <p className="font-semibold text-zinc-800 dark:text-gray-200">Data Connectors</p>
               </li>
             </ul>
-            <hr className="mx-1.5 border-zinc-300 " />
+            <hr className="mx-1.5 border-zinc-300 dark:border-gray-600" />
             <ul className="overflow-hidden flex flex-col gap-y-4">
-              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60">
+              <li className="flex-1 w-full  flex items-center gap-4.5 p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-gray-700/60">
                 <span>
                   <MagicWandIcon className="w-8 h-8" />
                 </span>
-                <p className="font-semibold text-zinc-800">AI Virtual</p>
-                <span className=" bg-zinc-700 text-zinc-100 rounded-full px-2 py-0.5">
+                <p className="font-semibold text-zinc-800 dark:text-gray-200">AI Virtual</p>
+                <span className=" bg-zinc-700 dark:bg-gray-600 text-zinc-100 dark:text-gray-200 rounded-full px-2 py-0.5">
                   Beta
                 </span>
               </li>
@@ -91,16 +91,16 @@ export default function Dashboard() {
       </aside>
 
       {/* Chat Screen */}
-      <main className="relative w-full h-screen bg-zinc-50 text-zinc-800 py-6 pl-28 pr-6">
+      <main className="relative w-full h-screen bg-zinc-50 dark:bg-gray-900 text-zinc-800 dark:text-gray-200 py-6 pl-28 pr-6">
         <div>
-          <h1 className="text-3xl text-zinc-800 font-semibold flex gap-x-2">
-            <p className="text-zinc-500 font-medium ">Welcome,</p>
+          <h1 className="text-3xl text-zinc-800 dark:text-gray-200 font-semibold flex gap-x-2">
+            <p className="text-zinc-500 dark:text-gray-400 font-medium ">Welcome,</p>
             Muchtar
           </h1>
         </div>
 
         <div className="grid grid-cols-6 gap-4 mt-12">
-          <div className="col-span-3 flex gap-4 items-center shadow-lg shadow-zinc-200 p-4 rounded-lg bg-white ">
+          <div className="col-span-3 flex gap-4 items-center shadow-lg shadow-zinc-200 dark:shadow-gray-700 p-4 rounded-lg bg-white dark:bg-gray-800">
             <div>
               <Image
                 alt="Image"
@@ -110,26 +110,26 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-2/3 flex flex-col gap-y-3 justify-center items-start h-full ">
-              <h1 className="text-lg text-zinc-800 font-semibold">
+              <h1 className="text-lg text-zinc-800 dark:text-gray-200 font-semibold">
                 Create your Own Eternity Chain
               </h1>
-              <p className="text-sm text-zinc-600 leading-relaxed">
+              <p className="text-sm text-zinc-600 dark:text-gray-400 leading-relaxed">
                 Aliqua velit sint cupidatat aute consectetur quis fugiat quis
                 adipisicing do adipisicing. Adipisicing ut voluptate officia
                 culpa esse aliquip proident. Consequat quis nostrud id aliqua
                 amet elit deserunt nostrud consequat.
               </p>
 
-              <button className="bg-zinc-800 text-white text-sm font-semibold leading-relaxed px-4 py-2 rounded-lg">
+              <button className="bg-zinc-800 dark:bg-gray-600 text-white dark:text-gray-200 text-sm font-semibold leading-relaxed px-4 py-2 rounded-lg">
                 Build Eternity
               </button>
             </div>
           </div>
-          <div className="col-span-2 border border-zinc-200 p-4 rounded-lg bg-white ">
+          <div className="col-span-2 border border-zinc-200 dark:border-gray-600 p-4 rounded-lg bg-white dark:bg-gray-800">
             Sample Video
           </div>
-          <div className="col-span-1 border flex flex-col justify-between border-zinc-200 p-4 rounded-lg bg-white ">
-            <h1 className="text-lg font-semibold text-zinc-800">Resources</h1>
+          <div className="col-span-1 border flex flex-col justify-between border-zinc-200 dark:border-gray-600 p-4 rounded-lg bg-white dark:bg-gray-800">
+            <h1 className="text-lg font-semibold text-zinc-800 dark:text-gray-200">Resources</h1>
 
             <ul>
               <li className="flex justify-between items-center">
@@ -149,11 +149,11 @@ export default function Dashboard() {
         </div>
 
         <div className="mt-12">
-          <ul className="flex gap-x-2 bg-zinc-200 w-fit px-1.5 py-1.5 rounded-lg">
-            <li className="text-sm font-semibold text-zinc-700 bg-white px-2 py-1 rounded-sm">
+          <ul className="flex gap-x-2 bg-zinc-200 dark:bg-gray-700 w-fit px-1.5 py-1.5 rounded-lg">
+            <li className="text-sm font-semibold text-zinc-700 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 py-1 rounded-sm">
               Trends Eternity
             </li>
-            <li className="text-sm font-light text-zinc-500 px-2 py-1 rounded-sm">
+            <li className="text-sm font-light text-zinc-500 dark:text-gray-400 px-2 py-1 rounded-sm">
               Featured Agents
             </li>
           </ul>
@@ -163,20 +163,20 @@ export default function Dashboard() {
             {Array.from({ length: 5 }).map((_, index) => (
               <div
                 key={index}
-                className="flex-1 p-4 bg-white rounded-lg shadow-none shadow-zinc-200 box-content w-2/3  hover:shadow-lg hover:shadow-zinc-300/30 transition-all duration-300"
+                className="flex-1 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-none shadow-zinc-200 dark:shadow-gray-700 box-content w-2/3  hover:shadow-lg hover:shadow-zinc-300/30 dark:hover:shadow-gray-600/30 transition-all duration-300"
               >
-                <h1 className="text-lg font-semibold text-zinc-800">
+                <h1 className="text-lg font-semibold text-zinc-800 dark:text-gray-200">
                   Heading Card
                 </h1>
-                <p className="text-sm text-zinc-700 mt-1">
+                <p className="text-sm text-zinc-700 dark:text-gray-400 mt-1">
                   Esse sit irure commodo nulla nostrud adipisicing sit culpa
                   voluptate voluptate quis incididunt.
                 </p>
 
                 <div className="flex justify-between items-center mt-8">
                   <div className="flex gap-1 items-center">
-                    <div className="rounded-full h-5 w-5 bg-zinc-400" />
-                    <p className="text-xs text-zinc-400">Name</p>
+                    <div className="rounded-full h-5 w-5 bg-zinc-400 dark:bg-gray-600" />
+                    <p className="text-xs text-zinc-400 dark:text-gray-500">Name</p>
                   </div>
 
                   <div className="flex gap-0.5 items-center">
@@ -197,19 +197,18 @@ export default function Dashboard() {
                     </svg>
                     <p>24</p>
                   </div>
-                </div>
 
                 <div className="flex flex-wrap gap-2 mt-8">
-                  <span className="bg-zinc-200 text-zinc-700 px-2 py-1 rounded-full text-xs">
+                  <span className="bg-zinc-200 dark:bg-gray-700 text-zinc-700 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
                     #hashtag1
                   </span>
-                  <span className="bg-zinc-200 text-zinc-700 px-2 py-1 rounded-full text-xs">
+                  <span className="bg-zinc-200 dark:bg-gray-700 text-zinc-700 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
                     #hashtag2
                   </span>
-                  <span className="bg-zinc-200 text-zinc-700 px-2 py-1 rounded-full text-xs">
+                  <span className="bg-zinc-200 dark:bg-gray-700 text-zinc-700 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
                     #hashtag3
                   </span>
-                  <span className="bg-zinc-200 text-zinc-700 px-2 py-1 rounded-full text-xs">
+                  <span className="bg-zinc-200 dark:bg-gray-700 text-zinc-700 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
                     #hashtag4
                   </span>
                 </div>
