@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 const NavLink = ({ href, children }: { href: string; children: ReactNode }) => (
   <Link
     href={href}
-    className="text-zinc-600 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium text-sm transition-colors"
+    className="text-zinc-800 dark:text-zinc-100 hover:text-purple-600 dark:hover:text-purple-400 font-medium  transition-colors"
   >
     {children}
   </Link>
@@ -21,7 +21,7 @@ const MobileNavLink = ({
 }) => (
   <Link
     href={href}
-    className="block py-2 text-zinc-600 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium text-sm"
+    className="block py-2 text-zinc-900 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium leading-relaxed transition-colors duration-300"
   >
     {children}
   </Link>
@@ -184,9 +184,9 @@ const FaqItem = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-sm overflow-hidden border border-zinc-100 dark:border-zinc-800">
+    <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm overflow-hidden border border-zinc-100 dark:border-zinc-700">
       <button
-        className="w-full px-6 py-4 text-left font-semibold text-zinc-700 dark:text-zinc-100 focus:outline-none flex justify-between items-center"
+        className="w-full px-6 py-4 text-left font-medium text-zinc-800 dark:text-zinc-200 focus:outline-none flex justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{question}</span>
@@ -211,9 +211,7 @@ const FaqItem = ({
           isOpen ? 'max-h-96 pb-4' : 'max-h-0'
         }`}
       >
-        <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
-          {answer}
-        </p>
+        <p className="text-zinc-600 dark:text-zinc-400 text-sm">{answer}</p>
       </div>
     </div>
   );

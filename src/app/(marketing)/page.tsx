@@ -12,7 +12,7 @@ import TrustIndicator from '@/components/ui/landing-page/TrustIndicator';
 
 const EternityChainLanding = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans">
+    <div className="min-h-screen bg-white dark:bg-zinc-950 text-gray-800 font-sans">
       {/* Navigation */}
       <Navbar />
 
