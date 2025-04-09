@@ -1,0 +1,888 @@
+{
+  "address": "GWgEbF6ewumjA5ZSgxWbBjDKJhdZ6GyxKQJZmyjGFADF",
+  "metadata": {
+    "name": "eternity_sc",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_sp",
+      "discriminator": [92, 10, 251, 111, 78, 222, 210, 220],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "storage_pointer",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [115, 112]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              },
+              {
+                "kind": "arg",
+                "path": "sp_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "locker",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [108, 111, 99, 107, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "_locker_id",
+          "type": "u32"
+        },
+        {
+          "name": "_sp_id",
+          "type": "u32"
+        },
+        {
+          "name": "key",
+          "type": {
+            "array": ["u8", 32]
+          }
+        }
+      ]
+    },
+    {
+      "name": "buy_token",
+      "discriminator": [138, 127, 14, 91, 38, 87, 115, 105],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [118, 97, 117, 108, 116]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_lamport",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118, 97, 117, 108, 116, 95, 108, 97, 109, 112, 111, 114, 116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "create_locker",
+      "discriminator": [167, 90, 137, 154, 75, 47, 17, 84],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "locker",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [108, 111, 99, 107, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "locker_id",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "create_profile",
+      "discriminator": [225, 205, 234, 143, 17, 186, 50, 220],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "profile",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [112, 114, 111, 102, 105, 108, 101]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "age",
+          "type": "u16"
+        },
+        {
+          "name": "hobbie",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "create_sp",
+      "discriminator": [211, 97, 93, 71, 223, 37, 82, 95],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "storage_pointer",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [115, 112]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              },
+              {
+                "kind": "arg",
+                "path": "sp_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "old_storage_pointer",
+          "writable": true
+        },
+        {
+          "name": "locker",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [108, 111, 99, 107, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "locker_id",
+          "type": "u32"
+        },
+        {
+          "name": "sp_id",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "create_vault",
+      "discriminator": [29, 237, 247, 208, 193, 82, 54, 135],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [118, 97, 117, 108, 116]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_lamport",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118, 97, 117, 108, 116, 95, 108, 97, 109, 112, 111, 114, 116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "delete_sp",
+      "discriminator": [34, 198, 6, 144, 40, 17, 213, 156],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "storage_pointer",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [115, 112]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              },
+              {
+                "kind": "arg",
+                "path": "sp_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "locker",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [108, 111, 99, 107, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "_locker_id",
+          "type": "u32"
+        },
+        {
+          "name": "_sp_id",
+          "type": "u32"
+        },
+        {
+          "name": "id",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "take_token",
+      "discriminator": [122, 245, 91, 55, 208, 100, 59, 39],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [118, 97, 117, 108, 116]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault_lamport",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118, 97, 117, 108, 116, 95, 108, 97, 109, 112, 111, 114, 116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "update_locker",
+      "discriminator": [93, 167, 35, 96, 137, 119, 30, 26],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "locker",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [108, 111, 99, 107, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "_locker_id",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "visibillity",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "update_profile",
+      "discriminator": [98, 67, 99, 206, 86, 115, 175, 1],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "profile",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [112, 114, 111, 102, 105, 108, 101]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "age",
+          "type": "u16"
+        },
+        {
+          "name": "hobbie",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "update_sp",
+      "discriminator": [119, 184, 133, 165, 252, 8, 55, 68],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "storage_pointer",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [115, 112]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              },
+              {
+                "kind": "arg",
+                "path": "sp_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "locker",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [108, 111, 99, 107, 101, 114]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "locker_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "_locker_id",
+          "type": "u32"
+        },
+        {
+          "name": "_sp_id",
+          "type": "u32"
+        },
+        {
+          "name": "id",
+          "type": "u16"
+        },
+        {
+          "name": "key",
+          "type": {
+            "array": ["u8", 32]
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Locker",
+      "discriminator": [74, 246, 6, 113, 249, 228, 75, 169]
+    },
+    {
+      "name": "Profile",
+      "discriminator": [184, 101, 165, 188, 95, 63, 127, 188]
+    },
+    {
+      "name": "StoragePointer",
+      "discriminator": [116, 97, 91, 209, 62, 139, 54, 149]
+    },
+    {
+      "name": "Vault",
+      "discriminator": [211, 8, 232, 43, 2, 152, 117, 119]
+    },
+    {
+      "name": "VaultLamport",
+      "discriminator": [93, 192, 187, 113, 181, 95, 120, 220]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "ProfileNotFound",
+      "msg": "The specified profile could not be found."
+    },
+    {
+      "code": 6001,
+      "name": "ProfileAlreadyExists",
+      "msg": "A profile with the same identifier already exists."
+    },
+    {
+      "code": 6002,
+      "name": "LockerNotFound",
+      "msg": "The specified locker could not be found."
+    },
+    {
+      "code": 6003,
+      "name": "LockerAlreadyExists",
+      "msg": "A locker with the same identifier already exists."
+    },
+    {
+      "code": 6004,
+      "name": "LockerLimitExceeded",
+      "msg": "The maximum number of lockers has been exceeded."
+    },
+    {
+      "code": 6005,
+      "name": "StoragePointerGroupNotFound",
+      "msg": "The specified storage pointer group could not be found."
+    },
+    {
+      "code": 6006,
+      "name": "StoragePointerGroupAlreadyExists",
+      "msg": "A storage pointer group with the same identifier already exists."
+    },
+    {
+      "code": 6007,
+      "name": "StoragePointerGroupLimitExceeded",
+      "msg": "The maximum number of storage pointer groups has been exceeded."
+    },
+    {
+      "code": 6008,
+      "name": "DataNotValid",
+      "msg": "The provided input data is not valid."
+    },
+    {
+      "code": 6009,
+      "name": "UnAuthorized",
+      "msg": "Not Authorized"
+    },
+    {
+      "code": 6010,
+      "name": "LamportNotEnough",
+      "msg": "Not Enough Lamport or SOL"
+    }
+  ],
+  "types": [
+    {
+      "name": "Locker",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "id",
+            "type": "u32"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "data_count",
+            "type": "u64"
+          },
+          {
+            "name": "size",
+            "type": "u32"
+          },
+          {
+            "name": "visibility",
+            "type": "bool"
+          },
+          {
+            "name": "storage_pointer",
+            "type": {
+              "option": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Profile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "age",
+            "type": "u16"
+          },
+          {
+            "name": "hobbie",
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "message",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StoragePointer",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "locker_id",
+            "type": "u32"
+          },
+          {
+            "name": "id",
+            "type": "u32"
+          },
+          {
+            "name": "data",
+            "type": {
+              "vec": {
+                "array": ["u8", 32]
+              }
+            }
+          },
+          {
+            "name": "data_count",
+            "type": "u16"
+          },
+          {
+            "name": "next_sp",
+            "type": {
+              "option": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vault",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "token",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VaultLamport",
+      "type": {
+        "kind": "struct"
+      }
+    }
+  ]
+}
