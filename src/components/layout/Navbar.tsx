@@ -40,6 +40,9 @@ export default function Navbar() {
           {/* Menu Hamburger */}
           <div className="md:hidden">
             <button
+              id="menu"
+              type="button"
+              name="menu"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-400"
             >
