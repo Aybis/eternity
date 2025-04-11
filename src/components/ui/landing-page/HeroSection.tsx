@@ -30,6 +30,7 @@ export default function HeroSection() {
           <div className="absolute -z-10 w-40 h-40 sm:w-60 sm:h-60 md:w-72 md:h-72 bg-purple-200 rounded-full opacity-50 blur-3xl top-0 right-0 sm:-right-6 md:-right-10 hidden xs:block"></div>
           <div className="rounded-2xl shadow-lg bg-white dark:bg-zinc-950 p-4 relative aspect-video">
             <Image
+              priority
               src="/image.jpeg"
               alt="AI Digital Legacy"
               width={600}
