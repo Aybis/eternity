@@ -1,5 +1,6 @@
 "use client";
 
+import Web3Utils from "@/utils/web3";
 import {
   ConnectionContextState,
   ConnectionProvider,
@@ -12,7 +13,7 @@ import {
   PhantomWalletAdapter,
   UnsafeBurnerWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
-import { createContext, useEffect, useMemo } from "react";
+import { createContext, useMemo } from "react";
 
 type Web3ContextType = {
   connection: ConnectionContextState | null;
@@ -41,7 +42,7 @@ const Web3ProviderContext = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const Web3Provider = ({ children }: { children: React.ReactNode }) => {
-  const network = "http://localhost:8899";
+  const network = Web3Utils.getInstance().getConnection().rpcEndpoint;
 
   const wallets = useMemo(
     () => [new UnsafeBurnerWalletAdapter(), new PhantomWalletAdapter()],
