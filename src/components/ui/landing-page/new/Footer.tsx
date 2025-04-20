@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 export default function Footer() {
@@ -86,9 +87,12 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-purple-600 mb-4">
-            Eternity Chain
-          </h3>
+          <Image
+            src={'engramind.svg'}
+            alt="Eternity Chain Logo"
+            width={200}
+            height={100}
+          />
         </div>
       </div>
     </footer>
