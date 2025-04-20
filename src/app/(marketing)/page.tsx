@@ -1,44 +1,40 @@
 'use client';
 import Navbar from '@/components/layout/Navbar';
-import Cta from '@/components/ui/landing-page/Cta';
 import Faq from '@/components/ui/landing-page/Faq';
-import Feature from '@/components/ui/landing-page/Feature';
-import Footer from '@/components/ui/landing-page/Footer';
-import HeroSection from '@/components/ui/landing-page/HeroSection';
-import HowItWork from '@/components/ui/landing-page/HowItWork';
+import Digital from '@/components/ui/landing-page/new/Digital';
+import Footer from '@/components/ui/landing-page/new/Footer';
+import Hero from '@/components/ui/landing-page/new/Hero';
+import Howitwork from '@/components/ui/landing-page/new/Howitwork';
+import Testimoni from '@/components/ui/landing-page/new/Testimoni';
 import Pricing from '@/components/ui/landing-page/Pricing';
-import Testimoni from '@/components/ui/landing-page/Testimoni';
 import TrustIndicator from '@/components/ui/landing-page/TrustIndicator';
 
 const EternityChainLanding = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 text-gray-800 font-sans">
       {/* Navigation */}
-      <Navbar />
+      <Navbar showMenu={true} />
 
-      {/* Hero Section */}
-      <HeroSection />
+      {/* Hero Secttion  */}
+      <Hero />
 
-      {/* Trust Indicators */}
-      <TrustIndicator />
+      {/* Digital Life  */}
+      <Digital />
 
-      {/* Features Section */}
-      <Feature />
+      {/* How it Work */}
+      <Howitwork />
 
-      {/* How It Works */}
-      <HowItWork />
-
-      {/* Pricing Section */}
+      {/* Pricing */}
       <Pricing />
 
-      {/* Testimonials */}
+      {/* Testimonial */}
       <Testimoni />
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <Faq />
 
-      {/* CTA Section */}
-      <Cta />
+      {/* Trust Indicator */}
+      <TrustIndicator />
 
       {/* Footer */}
       <Footer />
