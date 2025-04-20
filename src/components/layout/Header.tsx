@@ -1,5 +1,6 @@
 'use client';
 import ThemeToggle from '@/theme/theme-toggle';
+import Image from 'next/image';
 
 export default function Header() {
   return (
@@ -8,10 +9,13 @@ export default function Header() {
         {/* Menu Content  */}
         <div className="flex justify-between items-center py-4">
           {/* Header Logo */}
-          <div className="flex items-center">
-            <span className="ml-2 text-lg font-medium text-fuchsia-600">
-              ENGRAMIND
-            </span>
+          <div
+            onClick={() => {
+              window.location.href = '/';
+            }}
+            className="flex items-center cursor-pointer"
+          >
+            <Image src="/engramind.svg" alt="Logo" width={120} height={80} />
           </div>
 
           {/* Button Get Started */}

@@ -1,5 +1,6 @@
 import Header from '@/components/layout/Header';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -33,12 +34,18 @@ export default function Page() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white border border-zinc-300 dark:border-zinc-600 px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition">
+            <Link
+              href={'/auth/register'}
+              className="bg-white border border-zinc-300 dark:border-zinc-600 px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition"
+            >
               Use Default AI Voice
-            </button>
-            <button className="bg-zinc-800 px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-zinc-800 transition">
+            </Link>
+            <Link
+              href={'/auth/register/ai/second'}
+              className="bg-zinc-800 px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-zinc-800 transition"
+            >
               Customize with My Voice
-            </button>
+            </Link>
           </div>
         </div>
       </section>

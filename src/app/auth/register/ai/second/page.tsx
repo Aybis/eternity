@@ -1,6 +1,7 @@
 import Header from '@/components/layout/Header';
 import { Mic } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -39,6 +40,21 @@ export default function Page() {
                 10db
               </span>
             </div>
+          </div>
+
+          <div className="flex justify-between mt-6">
+            <Link
+              href={'/auth/register/ai'}
+              className="px-4 py-2 bg-gray-200 dark:bg-zinc-800 text-gray-700 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-zinc-700 transition"
+            >
+              Previous
+            </Link>
+            <Link
+              href={'/auth/register/ai/third'}
+              className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition"
+            >
+              Next
+            </Link>
           </div>
         </div>
       </div>

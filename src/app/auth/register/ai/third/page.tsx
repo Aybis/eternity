@@ -1,5 +1,6 @@
 import Header from '@/components/layout/Header';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -33,15 +34,18 @@ export default function Page() {
               className="w-full border border-zinc-300 dark:border-zinc-600 rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-gray-900 dark:text-white outline-none"
             />
             <div className="flex justify-between w-full">
-              <button
+              <Link
+                href={'/auth/register/ai/second'}
                 className="bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 font-medium text-sm px-4 py-2 rounded-md"
-                disabled
               >
                 Previous
-              </button>
-              <button className="bg-black text-white font-medium text-sm px-4 py-2 rounded-md">
+              </Link>
+              <Link
+                href={'/auth/register/ai/fourth'}
+                className="bg-black text-white font-medium text-sm px-4 py-2 rounded-md"
+              >
                 Next
-              </button>
+              </Link>
             </div>
           </div>
         </div>

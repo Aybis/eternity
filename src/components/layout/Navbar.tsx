@@ -2,6 +2,8 @@
 import ThemeToggle from '@/theme/theme-toggle';
 import { useState } from 'react';
 import { MobileNavLink, NavLink } from '../ui/HelperComponents';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type NavbarProps = {
   showMenu: boolean;
@@ -16,10 +18,13 @@ export default function Navbar({ showMenu }: NavbarProps) {
         {/* Menu Content  */}
         <div className="flex justify-between items-center py-4">
           {/* Header Logo */}
-          <div className="flex items-center">
-            <span className="ml-2 text-lg font-medium text-fuchsia-600">
-              ENGRAMIND
-            </span>
+          <div
+            onClick={() => {
+              window.location.href = '/';
+            }}
+            className="flex items-center cursor-pointer"
+          >
+            <Image src="/engramind.svg" alt="Logo" width={120} height={80} />
           </div>
 
           {/* Menu Navigation */}
@@ -35,12 +40,18 @@ export default function Navbar({ showMenu }: NavbarProps) {
           {/* Button Get Started */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex gap-x-2">
-              <button className="px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+              <Link
+                href={'/auth/login'}
+                className="px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              >
                 Login
-              </button>
-              <button className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm hover:from-purple-700 hover:to-indigo-700 transition-colors">
+              </Link>
+              <Link
+                href={'/auth/register'}
+                className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm hover:from-purple-700 hover:to-indigo-700 transition-colors"
+              >
                 Sign Up
-              </button>
+              </Link>
             </div>
 
             <ThemeToggle />

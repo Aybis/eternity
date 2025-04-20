@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function TrustIndicator() {
   return (
-    <section className="py-20 max-w-6xl container mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+    <section className="max-w-6xl container mx-auto flex flex-col md:flex-row items-center justify-between gap-12 border border-zinc-200">
       {/* Left Side */}
-      <div className="w-3/5 py-14 px-8">
+      <div className="w-3/5 py-14 px-8 border border-b-0 border-t-0 border-zinc-200">
         <h2 className="text-3xl font-medium text-zinc-900 dark:text-white mb-4">
           Ready to Immortalize Your Legacy?
           <span className="text-purple-600">Start today.</span>

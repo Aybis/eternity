@@ -1,5 +1,7 @@
 import Navbar from '@/components/layout/Navbar';
 import { Mail } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -28,16 +30,20 @@ export default function Home() {
               className="w-full bg-transparent outline-none text-sm text-gray-900 dark:text-white"
             />
           </div>
-          <button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-md mb-4 transition">
-            Continue
-          </button>
+          <Link href={'/dashboard'}>
+            <div className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-md mb-4 transition text-center">
+              Continue
+            </div>
+          </Link>
           <div className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-4">
             Or continue with your preferred provider
           </div>
           <button className="w-full border border-zinc-300 dark:border-zinc-600 py-2 rounded-md flex justify-center items-center text-sm font-medium text-gray-700 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+            <Image
+              src="/assets/google-icon.webp"
               alt="Google"
+              width={20}
+              height={20}
               className="w-5 h-5 mr-2"
             />
             Continue with Google

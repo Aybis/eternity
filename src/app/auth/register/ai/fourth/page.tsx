@@ -1,5 +1,6 @@
 import Header from '@/components/layout/Header';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -25,9 +26,20 @@ export default function Page() {
             quam ac elit condimentum congue sit amet sit amet nisl.
           </p>
 
-          <button className="bg-black text-white w-full font-medium text-sm px-4 py-2 rounded-md">
-            View Summary
-          </button>
+          <div className="flex flex-col items-center gap-4">
+            <Link
+              href="/auth/register/ai/fifth"
+              className="bg-black text-white w-fit font-medium text-sm px-4 py-2 rounded-md"
+            >
+              View Summary
+            </Link>
+            <Link
+              href="/auth/register/ai/third"
+              className="text-sm text-blue-500 hover:underline mb-4 inline-block"
+            >
+              Back
+            </Link>
+          </div>
         </div>
       </div>
     </div>

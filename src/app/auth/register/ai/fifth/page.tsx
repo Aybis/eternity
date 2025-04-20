@@ -1,5 +1,6 @@
 import Header from '@/components/layout/Header';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -76,12 +77,18 @@ export default function Page() {
           ))}
 
           <div className="flex justify-between">
-            <button className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-md font-medium">
+            <Link
+              href="/auth/register/ai/fourth"
+              className="bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-md font-medium"
+            >
               Reset Personality
-            </button>
-            <button className="bg-black hover:bg-zinc-800 text-white text-sm px-4 py-2 rounded-md font-medium">
+            </Link>
+            <Link
+              href="/auth/register/ai/sixth"
+              className="bg-black hover:bg-zinc-800 text-white text-sm px-4 py-2 rounded-md font-medium"
+            >
               Try Personality
-            </button>
+            </Link>
           </div>
         </div>
       </div>

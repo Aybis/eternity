@@ -16,7 +16,7 @@ export default function Pricing() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto border border-zinc-200">
         <PricingCard
           title="Initial Package"
           price="$99"
@@ -30,7 +30,7 @@ export default function Pricing() {
           highlighted={true}
         />
 
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col ">
           <PricingCard
             title="Upload-as-you-go"
             price="$0.99"

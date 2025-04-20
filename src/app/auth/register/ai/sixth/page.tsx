@@ -1,6 +1,7 @@
 import Header from '@/components/layout/Header';
 import { Mic } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -113,12 +114,18 @@ export default function Page() {
               </button>
             </div>
             <div className="flex justify-between mt-4">
-              <button className="bg-zinc-100 dark:bg-zinc-800 text-sm text-zinc-600 dark:text-zinc-300 px-4 py-2 rounded-md">
+              <Link
+                href="/auth/register/ai/fifth"
+                className="bg-zinc-100 dark:bg-zinc-800 text-sm text-zinc-600 dark:text-zinc-300 px-4 py-2 rounded-md"
+              >
                 Back
-              </button>
-              <button className="bg-black text-white text-sm font-medium px-4 py-2 rounded-md">
+              </Link>
+              <Link
+                href="/auth/register/ai/seventh"
+                className="bg-black text-white text-sm font-medium px-4 py-2 rounded-md"
+              >
                 Save & Finish Setup
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import Header from '@/components/layout/Header';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -12,11 +13,17 @@ export default function Page() {
           <p className="text-sm text-zinc-600 dark:text-zinc-300">
             You’ll be redirected to your Memory Locker dashboard to start
             creating your core memories. If nothing happens,{' '}
-            <a href="#" className="text-blue-600 hover:underline">
+            <Link href="/dashboard" className="text-blue-600 hover:underline">
               click here
-            </a>
+            </Link>
             .
           </p>
+          <Link
+            href="/auth/register/ai/sixth"
+            className="text-sm text-zinc-500 underline hover:underline mb-4 inline-block"
+          >
+            Back
+          </Link>
         </div>
       </section>
     </div>

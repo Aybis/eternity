@@ -82,10 +82,10 @@ const PricingCard = ({
   highlighted?: boolean;
 }) => (
   <div
-    className={`bg-white dark:bg-zinc-800 rounded-xl p-3 ${
+    className={`bg-white dark:bg-zinc-800  ${
       highlighted
-        ? 'border-purple-200 dark:border-purple-400 '
-        : 'border-zinc-200 dark:border-zinc-700'
+        ? 'border-purple-200 dark:border-purple-400 p-4'
+        : 'border-zinc-200 dark:border-zinc-700 border p-3 border-t-0 even:border-b-0 border-r-0'
     } relative`}
   >
     {highlighted && (
@@ -143,7 +143,7 @@ const PricingCard = ({
     <button
       className={`w-full py-2 rounded-lg  font-medium transition-colors ${
         highlighted
-          ? 'mt-18 bg-gradient-to-r text-lg from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700'
+          ? 'mt-16 -mb-4 bg-gradient-to-r text-lg from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700'
           : 'text-sm bg-purple-50 border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900'
       }`}
     >

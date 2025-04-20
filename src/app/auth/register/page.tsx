@@ -1,4 +1,5 @@
 import Navbar from '@/components/layout/Navbar';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -91,12 +92,11 @@ export default function Home() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-md transition"
-            >
-              Continue
-            </button>
+            <Link href={'/auth/register/ai'}>
+              <div className=" w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-md transition text-center">
+                Continue
+              </div>
+            </Link>
           </form>
 
           <p className="text-xs text-center mt-4 text-zinc-500 dark:text-zinc-400">
