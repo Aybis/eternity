@@ -1,4 +1,5 @@
 'use client';
+import { Gem } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ReactNode } from 'react';
@@ -81,31 +82,42 @@ const PricingCard = ({
   highlighted?: boolean;
 }) => (
   <div
-    className={`bg-white dark:bg-zinc-800 rounded-xl p-6 border ${
+    className={`bg-white dark:bg-zinc-800  ${
       highlighted
-        ? 'border-purple-200 dark:border-purple-400 shadow-md'
-        : 'border-zinc-200 dark:border-zinc-700 shadow-sm'
+        ? 'border-purple-200 dark:border-purple-400 p-4'
+        : 'border-zinc-200 dark:border-zinc-700 border p-3 border-t-0 even:border-b-0 border-r-0'
     } relative`}
   >
     {highlighted && (
-      <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-purple-100 dark:bg-purple-700 text-purple-700 dark:text-purple-100 text-xs font-medium py-1 px-2 rounded-full">
+      <div className="flex items-center w-fit bg-purple-50 text-purple-500  text-xs font-medium py-1 px-2 rounded-full">
+        <Gem className="h-4" />
         Most Popular
       </div>
     )}
-    <h3 className="text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-200">
+    <h3
+      className={[
+        highlighted ? 'text-2xl mt-4' : 'text-lg',
+        'font-semibold mb-2 text-zinc-800 dark:text-zinc-200',
+      ].join(' ')}
+    >
       {title}
     </h3>
-    <div className="mb-6">
-      <span className="text-3xl font-bold text-zinc-800 dark:text-zinc-200">
+    <div className="mb-2">
+      <div
+        className={[
+          highlighted ? 'text-5xl mb-12' : 'text-3xl',
+          'font-medium text-zinc-800 dark:text-zinc-200',
+        ].join(' ')}
+      >
         {price}
-      </span>
-      <span className="text-zinc-500 dark:text-zinc-400 text-sm">{period}</span>
+        <span className="text-zinc-400 font-medium text-sm ml-2">{period}</span>
+      </div>
     </div>
-    <ul className="space-y-3 mb-6">
+    <ul className="flex flex-wrap gap-x-2 space-y-3 mb-6">
       {features.map((feature, index) => (
         <li key={index} className="flex items-start">
           <svg
-            className="h-5 w-5 text-green-500 mr-2 flex-shrink-0"
+            className="h-5 w-5 text-green-500 mr-1 flex-shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -117,17 +129,22 @@ const PricingCard = ({
               d="M5 13l4 4L19 7"
             />
           </svg>
-          <span className="text-sm text-zinc-600 dark:text-zinc-400">
+          <span
+            className={[
+              highlighted ? 'text-base font-medium' : 'text-xs',
+              ' text-zinc-600 dark:text-zinc-400',
+            ].join(' ')}
+          >
             {feature}
           </span>
         </li>
       ))}
     </ul>
     <button
-      className={`w-full py-2 rounded-lg text-sm font-medium transition-colors ${
+      className={`w-full py-2 rounded-lg  font-medium transition-colors ${
         highlighted
-          ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700'
-          : 'border border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900'
+          ? 'mt-16 -mb-4 bg-gradient-to-r text-lg from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700'
+          : 'text-sm bg-purple-50 border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900'
       }`}
     >
       {buttonText}
@@ -184,7 +201,7 @@ const FaqItem = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm overflow-hidden border border-zinc-100 dark:border-zinc-700">
+    <div className="bg-white dark:bg-zinc-800 rounded  overflow-hidden border border-zinc-100 dark:border-zinc-700">
       <button
         className="w-full px-6 py-4 text-left font-medium text-zinc-800 dark:text-zinc-200 focus:outline-none flex justify-between items-center"
         onClick={() => setIsOpen(!isOpen)}
