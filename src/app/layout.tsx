@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'The Eternity',
+  title: 'Engramind',
   description:
     'Turn your life memories into a living, interactive AI bound forever on the blockchain.',
 };

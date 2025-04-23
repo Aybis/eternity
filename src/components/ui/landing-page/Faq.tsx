@@ -5,7 +5,7 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 dark:bg-zinc-950"
+      className="py-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 dark:bg-zinc-950"
     >
       <div className="flex flex-col md:flex-row gap-12">
         <div className="md:w-1/3">
