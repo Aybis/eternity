@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { MobileNavLink, NavLink } from '../ui/HelperComponents';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 
 type NavbarProps = {
   showMenu: boolean;
@@ -11,6 +12,7 @@ type NavbarProps = {
 
 export default function Navbar({ showMenu }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <nav className="fixed w-full bg-white/30 backdrop-blur-sm bg-opacity-95 z-50 border-b border-gray-100 shadow-sm dark:bg-zinc-950/30 dark:border-zinc-700 ">
@@ -24,13 +26,20 @@ export default function Navbar({ showMenu }: NavbarProps) {
             }}
             className="flex items-center cursor-pointer"
           >
-            <Image src="/engramind.svg" alt="Logo" width={120} height={80} />
+            <Image
+              src={theme === 'light' ? '/Engramind.svg' : '/Engramind-dark.svg'}
+              alt="Logo"
+              width={120}
+              height={80}
+            />
           </div>
 
           {/* Menu Navigation */}
           {showMenu && (
             <div className="justify-around w-1/3 md:w-1/2 hidden md:flex">
-              <NavLink href="#features">Features</NavLink>
+              <NavLink href="#features">
+                Features {theme} {theme === 'light' ? 'terang' : 'gelap'}
+              </NavLink>
               <NavLink href="#how-it-works">How It Works</NavLink>
               <NavLink href="#pricing">Pricing</NavLink>
               <NavLink href="#faq">FAQ</NavLink>

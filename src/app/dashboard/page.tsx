@@ -1,6 +1,7 @@
 'use client';
 
 import { GalleryVerticalEndIcon, Wallet } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 
 function Button({
@@ -81,9 +82,11 @@ export default function Dashboard() {
         </div>
         <div className="text-xs text-zinc-500">
           <div className="flex items-center gap-2">
-            <img
-              src="/avatar.png"
+            <Image
+              src="/assets/avatar/avatar1.png"
               alt="user"
+              width={24}
+              height={24}
               className="w-6 h-6 rounded-full"
             />
             <div>
@@ -98,7 +101,7 @@ export default function Dashboard() {
 
       {/* Main Content */}
       <main className="flex-1 p-6 w-full">
-        <div className="flex items-cente justify-center gap-4 mb-6 inset-x-0 bg-zinc-50">
+        <div className="flex items-cente justify-center gap-4 mb-6 inset-x-0 ">
           <Button variant="outline" className="text-sm">
             Available Locker: 0
           </Button>
