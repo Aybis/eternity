@@ -26,7 +26,7 @@ export default function Hero() {
         </button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 my-8 sm:my-10 lg:my-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 my-8 sm:my-10 lg:my-12">
         {imageAsset.map((image, index) => (
           <div key={index} className="relative w-full">
             <Image
@@ -36,7 +36,7 @@ export default function Hero() {
               width={400}
               height={600}
             />
-            <div className="absolute inset-0 dark:bg-black dark:opacity-30 rounded-md"></div>
+            <div className="absolute inset-0 dark:bg-black dark:opacity-30"></div>
           </div>
         ))}
       </div>
