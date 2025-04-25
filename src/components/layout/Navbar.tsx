@@ -37,9 +37,7 @@ export default function Navbar({ showMenu }: NavbarProps) {
           {/* Menu Navigation */}
           {showMenu && (
             <div className="justify-around w-1/3 md:w-1/2 hidden md:flex">
-              <NavLink href="#features">
-                Features {theme} {theme === 'light' ? 'terang' : 'gelap'}
-              </NavLink>
+              <NavLink href="#features">Features</NavLink>
               <NavLink href="#how-it-works">How It Works</NavLink>
               <NavLink href="#pricing">Pricing</NavLink>
               <NavLink href="#faq">FAQ</NavLink>
