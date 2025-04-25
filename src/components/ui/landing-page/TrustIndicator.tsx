@@ -6,7 +6,7 @@ export default function TrustIndicator() {
       {/* Left Side */}
       <div className="lg:w-3/5 py-14 px-8 border border-b-0 border-t-0 border-l-0 border-zinc-200 dark:border-none">
         <h2 className="text-3xl font-medium text-zinc-900 dark:text-white mb-4">
-          Ready to Immortalize Your Legacy?{' '}
+          Ready to Immortalize Your Legacy?
           <span className="text-purple-600 dark:text-purple-400">
             Start today.
           </span>
