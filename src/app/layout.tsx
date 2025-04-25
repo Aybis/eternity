@@ -4,6 +4,7 @@ import './globals.css';
 import { QueryProvider } from '@/components/query-provider';
 import { Suspense } from 'react';
 import ThemeProvider from '@/theme/theme-provider';
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -46,6 +47,7 @@ export default function RootLayout({
               }
             >
               {children}
+              <Analytics />
             </Suspense>
           </ThemeProvider>
         </QueryProvider>
