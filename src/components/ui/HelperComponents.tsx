@@ -73,6 +73,7 @@ const PricingCard = ({
   features,
   buttonText,
   highlighted = false,
+  addClass,
 }: {
   title: string;
   price: string;
@@ -80,13 +81,14 @@ const PricingCard = ({
   features: string[];
   buttonText: string;
   highlighted?: boolean;
+  addClass?: string;
 }) => (
   <div
     className={`bg-white dark:bg-zinc-800  ${
       highlighted
         ? 'border-purple-200 dark:border-purple-400 p-4'
         : 'border-zinc-200 dark:border-zinc-700 border p-3 border-t-0 even:border-b-0 border-r-0'
-    } relative`}
+    } relative ${addClass}`}
   >
     {highlighted && (
       <div className="flex items-center w-fit bg-purple-50 text-purple-500  text-xs font-medium py-1 px-2 rounded-full">
