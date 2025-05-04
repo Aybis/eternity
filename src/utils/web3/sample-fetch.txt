@@ -1,0 +1,36 @@
+// CREATE PERSONALITY
+fetch("http://localhost:3000/api/personality/" + web3.wallet.publicKey,
+{
+    method: "POST",
+    body: JSON.stringify({
+    name: "John Doe",
+    age: 30,
+    hobbies: ["reading", "gaming"],
+    message: "Hello, world!",
+    }),
+}
+).then(async (res) => {
+const data = await res.json();
+await web3.wallet.sendTransaction(
+    Transaction.from(Buffer.from(data.data, "base64")),
+    web3.connection.connection
+);
+});
+
+
+// CREATE RELIC
+fetch("http://localhost:3000/api/relic/" + web3.wallet.publicKey, 
+{
+    method: "POST",
+    body: JSON.stringify({
+        name: "Relic John 1",
+        description: "Relic John",
+        fragments: ["Fragment 1", "Fragment 2", "Fragment 3"],
+    }),
+    }).then(async (res) => {
+    const data = await res.json();
+    await web3.wallet.sendTransaction(
+        Transaction.from(Buffer.from(data.data, "base64")),
+        web3.connection.connection
+    );
+});
