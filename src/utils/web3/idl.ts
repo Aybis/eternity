@@ -431,7 +431,7 @@ export type EternitySc = {
           "type": {
             "array": [
               "u8",
-              32
+              36
             ]
           }
         }
@@ -1108,7 +1108,7 @@ export type EternitySc = {
           "type": {
             "array": [
               "u8",
-              32
+              36
             ]
           }
         }
@@ -1433,6 +1433,10 @@ export type EternitySc = {
         "kind": "struct",
         "fields": [
           {
+            "name": "fragmentsId",
+            "type": "u32"
+          },
+          {
             "name": "owner",
             "type": "pubkey"
           },
@@ -1442,7 +1446,7 @@ export type EternitySc = {
               "vec": {
                 "array": [
                   "u8",
-                  32
+                  36
                 ]
               }
             }
@@ -1512,6 +1516,10 @@ export type EternitySc = {
       "type": {
         "kind": "struct",
         "fields": [
+          {
+            "name": "relicId",
+            "type": "u32"
+          },
           {
             "name": "owner",
             "type": "pubkey"

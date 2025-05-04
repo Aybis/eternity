@@ -425,7 +425,7 @@
           "type": {
             "array": [
               "u8",
-              32
+              36
             ]
           }
         }
@@ -1102,7 +1102,7 @@
           "type": {
             "array": [
               "u8",
-              32
+              36
             ]
           }
         }
@@ -1427,6 +1427,10 @@
         "kind": "struct",
         "fields": [
           {
+            "name": "fragments_id",
+            "type": "u32"
+          },
+          {
             "name": "owner",
             "type": "pubkey"
           },
@@ -1436,7 +1440,7 @@
               "vec": {
                 "array": [
                   "u8",
-                  32
+                  36
                 ]
               }
             }
@@ -1506,6 +1510,10 @@
       "type": {
         "kind": "struct",
         "fields": [
+          {
+            "name": "relic_id",
+            "type": "u32"
+          },
           {
             "name": "owner",
             "type": "pubkey"
