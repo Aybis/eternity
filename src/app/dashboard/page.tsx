@@ -1,22 +1,23 @@
-'use client';
+"use client";
 
-import { GalleryVerticalEndIcon, Wallet } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import WalletModal from "@/components/ui/wallet/WalletModal";
+import { GalleryVerticalEndIcon, Wallet } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 function Button({
   children,
-  className = '',
-  variant = 'solid',
+  className = "",
+  variant = "solid",
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'solid' | 'outline';
+  variant?: "solid" | "outline";
 }) {
-  const base = 'text-sm font-medium px-4 py-2 rounded-md transition';
+  const base = "text-sm font-medium px-4 py-2 rounded-md transition";
   const styles =
-    variant === 'outline'
-      ? 'border border-zinc-300 text-zinc-700 dark:text-zinc-200 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800'
-      : 'bg-purple-500 hover:bg-purple-600 text-white';
+    variant === "outline"
+      ? "border border-zinc-300 text-zinc-700 dark:text-zinc-200 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800"
+      : "bg-purple-500 hover:bg-purple-600 text-white";
   return (
     <button className={`${base} ${styles} ${className}`} {...props}>
       {children}
@@ -25,7 +26,7 @@ function Button({
 }
 
 function Input({
-  className = '',
+  className = "",
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
@@ -37,7 +38,7 @@ function Input({
 }
 
 export default function Dashboard() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   return (
     <div className="flex h-screen bg-white dark:bg-zinc-950 text-zinc-800">
@@ -52,26 +53,27 @@ export default function Dashboard() {
               <p className="text-sm font-light">Personal</p>
             </div>
           </div>
-          <Button className="w-full mb-4 bg-purple-500 hover:bg-purple-600 text-white flex items-center justify-center gap-x-1 font-semibold">
+          <WalletModal />
+          {/* <Button className="w-full mb-4 bg-purple-500 hover:bg-purple-600 text-white flex items-center justify-center gap-x-1 font-semibold">
             <Wallet className="h-4" />
             Connect Wallet
-          </Button>
+          </Button> */}
           <div className="text-xs uppercase text-zinc-500 mb-2">Platform</div>
           <nav className="space-y-2 text-sm">
             {[
-              { label: 'Memory Locker', icon: '🧠', active: true },
-              { label: 'General Personality', icon: '🧬' },
-              { label: 'Activity', icon: '🕘' },
-              { label: 'Heir Key', icon: '🗝️' },
-              { label: 'Publish', icon: '📤' },
-              { label: 'Settings', icon: '⚙️' },
+              { label: "Memory Locker", icon: "🧠", active: true },
+              { label: "General Personality", icon: "🧬" },
+              { label: "Activity", icon: "🕘" },
+              { label: "Heir Key", icon: "🗝️" },
+              { label: "Publish", icon: "📤" },
+              { label: "Settings", icon: "⚙️" },
             ].map(({ label, icon, active }) => (
               <div
                 key={label}
                 className={`flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer ${
                   active
-                    ? 'bg-purple-100 text-purple-700 font-medium'
-                    : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                    ? "bg-purple-100 text-purple-700 font-medium"
+                    : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                 }`}
               >
                 <span>{icon}</span>
