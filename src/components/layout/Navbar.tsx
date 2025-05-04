@@ -27,7 +27,7 @@ export default function Navbar({ showMenu }: NavbarProps) {
             className="flex items-center cursor-pointer"
           >
             <Image
-              src={theme !== 'dark' ? '/engramind.svg' : '/engramind-dark.svg'}
+              src={theme === 'light' ? '/engramind.svg' : '/engramindDark.svg'}
               alt="Logo"
               width={120}
               height={80}

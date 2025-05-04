@@ -4,7 +4,8 @@ import "./globals.css";
 import { QueryProvider } from "@/components/query-provider";
 import { Suspense } from "react";
 import ThemeProvider from "@/theme/theme-provider";
-import { Web3Provider } from "@/components/web3-provider";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Eternity",
+  title: "Engramind",
   description:
     "Turn your life memories into a living, interactive AI bound forever on the blockchain.",
 };
@@ -32,26 +33,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
-        <Web3Provider>
-          <QueryProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
+        <QueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center h-screen">
+                  Loading...
+                </div>
+              }
             >
-              <Suspense
-                fallback={
-                  <div className="flex items-center justify-center h-screen">
-                    Loading...
-                  </div>
-                }
-              >
-                {children}
-              </Suspense>
-            </ThemeProvider>
-          </QueryProvider>
-        </Web3Provider>
+              {children}
+              <Analytics />
+              <SpeedInsights />
+            </Suspense>
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

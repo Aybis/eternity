@@ -11,24 +11,24 @@ export default function Hero() {
   ];
 
   return (
-    <section className="pt-24 container mx-auto max-w-6xl">
+    <section className="pt-24 pb-12 container mx-auto px-4 lg:max-w-6xl">
       <div className="flex flex-col items-center justify-center gap-y-4">
-        <h1 className="text-7xl font-semibold text-zinc-800 dark:text-zinc-100 text-center">
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold text-zinc-800 dark:text-zinc-100 text-center">
           Secure Your <span className="text-purple-700">Legacy.</span>
         </h1>
-        <p className="text-center text-zinc-400 text-2xl w-lg mt-4">
+        <p className="text-center text-zinc-400 text-lg sm:text-xl lg:text-2xl w-full sm:w-3/4 lg:w-lg mt-4">
           Turn your life’s memories into digital treasures that live forever on
           the blockchain.
         </p>
-        <button className="mt-12 px-4 py-2 flex items-center gap-x-2 text-sm bg-purple-600 leading-relaxed text-white rounded-md hover:bg-purple-700 transition duration-300 ease-in-out text-lg">
+        <button className="mt-8 sm:mt-10 lg:mt-12 px-4 py-2 flex items-center gap-x-2 bg-purple-600 leading-relaxed text-white rounded-md hover:bg-purple-700 transition duration-300 ease-in-out text-base sm:text-lg">
           <LockClosedIcon />
           Secure Your Slot
         </button>
       </div>
 
-      <div className="flex justify-center items-center my-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 my-8 sm:my-10 lg:my-12">
         {imageAsset.map((image, index) => (
-          <div key={index} className="relative">
+          <div key={index} className="relative w-full">
             <Image
               src={image}
               alt={`Image ${index + 1}`}
@@ -36,13 +36,13 @@ export default function Hero() {
               width={400}
               height={600}
             />
-            <div className="absolute inset-0 dark:bg-black dark:opacity-30 "></div>
+            <div className="absolute inset-0 dark:bg-black dark:opacity-30"></div>
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center items-center mb-12 mt-20">
-        <h3 className="text-3xl font-semibold text-zinc-800 dark:text-zinc-100 max-w-3xl text-center">
+      <div className="flex justify-center items-center mb-8 sm:mb-10 lg:mb-12 mt-16 sm:mt-18 lg:mt-20 px-4">
+        <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-800 dark:text-zinc-100 max-w-full sm:max-w-2xl lg:max-w-3xl text-center">
           Digitalized your loved ones, instantly and securely connected through
           the Solana blockchain.
         </h3>
