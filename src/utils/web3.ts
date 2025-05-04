@@ -1,5 +1,5 @@
 import { AnchorProvider, Program, Provider } from "@coral-xyz/anchor";
-import { Connection } from "@solana/web3.js";
+import { clusterApiUrl, Connection } from "@solana/web3.js";
 import { EternitySc } from "./web3/idl";
 import idl from "./web3/idl.json";
 

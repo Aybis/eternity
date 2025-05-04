@@ -5,122 +5,306 @@
  * IDL can be found at `target/idl/eternity_sc.json`.
  */
 export type EternitySc = {
-  address: "GWgEbF6ewumjA5ZSgxWbBjDKJhdZ6GyxKQJZmyjGFADF";
-  metadata: {
-    name: "eternitySc";
-    version: "0.1.0";
-    spec: "0.1.0";
-    description: "Created with Anchor";
-  };
-  instructions: [
+  "address": "AZvZticEwFZPB2KYqcL2KrCJ164QY4rM1PgAH9AaoR8L",
+  "metadata": {
+    "name": "eternitySc",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
     {
-      name: "addSp";
-      discriminator: [92, 10, 251, 111, 78, 222, 210, 220];
-      accounts: [
+      "name": "createFragments",
+      "discriminator": [
+        66,
+        68,
+        145,
+        32,
+        254,
+        87,
+        149,
+        94
+      ],
+      "accounts": [
         {
-          name: "signer";
-          writable: true;
-          signer: true;
+          "name": "signer",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "storagePointer";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "fragments",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [115, 112];
+                "kind": "const",
+                "value": [
+                  102,
+                  114,
+                  97,
+                  103,
+                  109,
+                  101,
+                  110,
+                  116,
+                  115
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               },
               {
-                kind: "arg";
-                path: "lockerId";
+                "kind": "arg",
+                "path": "relicId"
               },
               {
-                kind: "arg";
-                path: "spId";
+                "kind": "arg",
+                "path": "fragmentsId"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "locker";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "oldFragments",
+          "writable": true
+        },
+        {
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [108, 111, 99, 107, 101, 114];
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               },
               {
-                kind: "arg";
-                path: "lockerId";
+                "kind": "arg",
+                "path": "relicId"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
-      ];
-      args: [
+      ],
+      "args": [
         {
-          name: "lockerId";
-          type: "u32";
+          "name": "relicId",
+          "type": "u32"
         },
         {
-          name: "spId";
-          type: "u32";
-        },
-        {
-          name: "key";
-          type: {
-            array: ["u8", 32];
-          };
+          "name": "fragmentsId",
+          "type": "u32"
         }
-      ];
+      ]
     },
     {
-      name: "buyToken";
-      discriminator: [138, 127, 14, 91, 38, 87, 115, 105];
-      accounts: [
+      "name": "createPersonality",
+      "discriminator": [
+        51,
+        247,
+        169,
+        76,
+        82,
+        18,
+        210,
+        4
+      ],
+      "accounts": [
         {
-          name: "signer";
-          writable: true;
-          signer: true;
+          "name": "signer",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "vault";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "personality",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [118, 97, 117, 108, 116];
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  114,
+                  115,
+                  111,
+                  110,
+                  97,
+                  108,
+                  105,
+                  116,
+                  121
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "vaultLamport";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "age",
+          "type": "u16"
+        },
+        {
+          "name": "hobbie",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "createRelic",
+      "discriminator": [
+        206,
+        19,
+        99,
+        204,
+        157,
+        190,
+        94,
+        228
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "relicId",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "createVault",
+      "discriminator": [
+        29,
+        237,
+        247,
+        208,
+        193,
+        82,
+        54,
+        135
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vaultLamport",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
                   118,
                   97,
                   117,
@@ -134,233 +318,178 @@ export type EternitySc = {
                   111,
                   114,
                   116
-                ];
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
-      ];
-      args: [
-        {
-          name: "amount";
-          type: "u64";
-        }
-      ];
+      ],
+      "args": []
     },
     {
-      name: "createLocker";
-      discriminator: [167, 90, 137, 154, 75, 47, 17, 84];
-      accounts: [
+      "name": "mAddFragment",
+      "discriminator": [
+        66,
+        9,
+        98,
+        120,
+        26,
+        32,
+        230,
+        214
+      ],
+      "accounts": [
         {
-          name: "signer";
-          writable: true;
-          signer: true;
+          "name": "signer",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "locker";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "fragments",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [108, 111, 99, 107, 101, 114];
+                "kind": "const",
+                "value": [
+                  102,
+                  114,
+                  97,
+                  103,
+                  109,
+                  101,
+                  110,
+                  116,
+                  115
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               },
               {
-                kind: "arg";
-                path: "lockerId";
+                "kind": "arg",
+                "path": "relicId"
+              },
+              {
+                "kind": "arg",
+                "path": "fragmentsId"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
-      ];
-      args: [
+      ],
+      "args": [
         {
-          name: "lockerId";
-          type: "u32";
+          "name": "relicId",
+          "type": "u32"
         },
         {
-          name: "name";
-          type: "string";
+          "name": "fragmentsId",
+          "type": "u32"
         },
         {
-          name: "description";
-          type: "string";
+          "name": "key",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
         }
-      ];
+      ]
     },
     {
-      name: "createProfile";
-      discriminator: [225, 205, 234, 143, 17, 186, 50, 220];
-      accounts: [
+      "name": "mBuyToken",
+      "discriminator": [
+        151,
+        89,
+        179,
+        71,
+        150,
+        144,
+        84,
+        39
+      ],
+      "accounts": [
         {
-          name: "signer";
-          writable: true;
-          signer: true;
+          "name": "signer",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "profile";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [112, 114, 111, 102, 105, 108, 101];
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        }
-      ];
-      args: [
-        {
-          name: "name";
-          type: "string";
-        },
-        {
-          name: "age";
-          type: "u16";
-        },
-        {
-          name: "hobbie";
-          type: {
-            vec: "string";
-          };
-        },
-        {
-          name: "message";
-          type: "string";
-        }
-      ];
-    },
-    {
-      name: "createSp";
-      discriminator: [211, 97, 93, 71, 223, 37, 82, 95];
-      accounts: [
-        {
-          name: "signer";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "storagePointer";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "vaultLamport",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [115, 112];
-              },
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "arg";
-                path: "lockerId";
-              },
-              {
-                kind: "arg";
-                path: "spId";
-              }
-            ];
-          };
-        },
-        {
-          name: "oldStoragePointer";
-          writable: true;
-        },
-        {
-          name: "locker";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [108, 111, 99, 107, 101, 114];
-              },
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "arg";
-                path: "lockerId";
-              }
-            ];
-          };
-        },
-        {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        }
-      ];
-      args: [
-        {
-          name: "lockerId";
-          type: "u32";
-        },
-        {
-          name: "spId";
-          type: "u32";
-        }
-      ];
-    },
-    {
-      name: "createVault";
-      discriminator: [29, 237, 247, 208, 193, 82, 54, 135];
-      accounts: [
-        {
-          name: "signer";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "vault";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [118, 97, 117, 108, 116];
-              },
-              {
-                kind: "account";
-                path: "signer";
-              }
-            ];
-          };
-        },
-        {
-          name: "vaultLamport";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [
+                "kind": "const",
+                "value": [
                   118,
                   97,
                   117,
@@ -374,128 +503,476 @@ export type EternitySc = {
                   111,
                   114,
                   116
-                ];
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
-      ];
-      args: [];
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
     },
     {
-      name: "deleteSp";
-      discriminator: [34, 198, 6, 144, 40, 17, 213, 156];
-      accounts: [
+      "name": "mDeleteFragment",
+      "discriminator": [
+        155,
+        170,
+        145,
+        189,
+        106,
+        88,
+        152,
+        122
+      ],
+      "accounts": [
         {
-          name: "signer";
-          writable: true;
-          signer: true;
+          "name": "signer",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "storagePointer";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "fragments",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [115, 112];
+                "kind": "const",
+                "value": [
+                  102,
+                  114,
+                  97,
+                  103,
+                  109,
+                  101,
+                  110,
+                  116,
+                  115
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               },
               {
-                kind: "arg";
-                path: "lockerId";
+                "kind": "arg",
+                "path": "relicId"
               },
               {
-                kind: "arg";
-                path: "spId";
+                "kind": "arg",
+                "path": "fragmentsId"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "locker";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [108, 111, 99, 107, 101, 114];
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               },
               {
-                kind: "arg";
-                path: "lockerId";
+                "kind": "arg",
+                "path": "relicId"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
-      ];
-      args: [
+      ],
+      "args": [
         {
-          name: "lockerId";
-          type: "u32";
+          "name": "relicId",
+          "type": "u32"
         },
         {
-          name: "spId";
-          type: "u32";
+          "name": "fragmentsId",
+          "type": "u32"
         },
         {
-          name: "id";
-          type: "u16";
+          "name": "id",
+          "type": "u16"
         }
-      ];
+      ]
     },
     {
-      name: "takeToken";
-      discriminator: [122, 245, 91, 55, 208, 100, 59, 39];
-      accounts: [
+      "name": "mSetPersonalityHobbie",
+      "discriminator": [
+        137,
+        164,
+        124,
+        78,
+        30,
+        103,
+        88,
+        50
+      ],
+      "accounts": [
         {
-          name: "signer";
-          writable: true;
-          signer: true;
+          "name": "signer",
+          "writable": true,
+          "signer": true
         },
         {
-          name: "vault";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "personality",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [118, 97, 117, 108, 116];
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  114,
+                  115,
+                  111,
+                  110,
+                  97,
+                  108,
+                  105,
+                  116,
+                  121
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               }
-            ];
-          };
+            ]
+          }
         },
         {
-          name: "vaultLamport";
-          writable: true;
-          pda: {
-            seeds: [
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "hobbie",
+          "type": {
+            "vec": "string"
+          }
+        }
+      ]
+    },
+    {
+      "name": "mSetPersonalityMessage",
+      "discriminator": [
+        91,
+        199,
+        162,
+        92,
+        134,
+        81,
+        91,
+        230
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "personality",
+          "writable": true,
+          "pda": {
+            "seeds": [
               {
-                kind: "const";
-                value: [
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  114,
+                  115,
+                  111,
+                  110,
+                  97,
+                  108,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "mSetRelicAuthority",
+      "discriminator": [
+        54,
+        39,
+        186,
+        17,
+        212,
+        190,
+        92,
+        144
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "relicId",
+          "type": "u32"
+        },
+        {
+          "name": "newAuthority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "mSetRelicDescription",
+      "discriminator": [
+        48,
+        208,
+        167,
+        60,
+        188,
+        249,
+        185,
+        67
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "relicId",
+          "type": "u32"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "mSetRelicHeir",
+      "discriminator": [
+        245,
+        23,
+        101,
+        61,
+        141,
+        53,
+        84,
+        48
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "relicId",
+          "type": "u32"
+        },
+        {
+          "name": "heir",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "mTakeToken",
+      "discriminator": [
+        188,
+        132,
+        208,
+        27,
+        179,
+        46,
+        233,
+        201
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vaultLamport",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
                   118,
                   97,
                   117,
@@ -509,422 +986,625 @@ export type EternitySc = {
                   111,
                   114,
                   116
-                ];
+                ]
               },
               {
-                kind: "account";
-                path: "signer";
+                "kind": "account",
+                "path": "signer"
               }
-            ];
-          };
-        },
-        {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        }
-      ];
-      args: [
-        {
-          name: "amount";
-          type: "u64";
-        }
-      ];
-    },
-    {
-      name: "updateLocker";
-      discriminator: [93, 167, 35, 96, 137, 119, 30, 26];
-      accounts: [
-        {
-          name: "signer";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "locker";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [108, 111, 99, 107, 101, 114];
-              },
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "arg";
-                path: "lockerId";
-              }
-            ];
-          };
-        },
-        {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        }
-      ];
-      args: [
-        {
-          name: "lockerId";
-          type: "u32";
-        },
-        {
-          name: "name";
-          type: "string";
-        },
-        {
-          name: "description";
-          type: "string";
-        },
-        {
-          name: "visibillity";
-          type: "bool";
-        }
-      ];
-    },
-    {
-      name: "updateProfile";
-      discriminator: [98, 67, 99, 206, 86, 115, 175, 1];
-      accounts: [
-        {
-          name: "signer";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "profile";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [112, 114, 111, 102, 105, 108, 101];
-              },
-              {
-                kind: "account";
-                path: "signer";
-              }
-            ];
-          };
-        },
-        {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        }
-      ];
-      args: [
-        {
-          name: "name";
-          type: "string";
-        },
-        {
-          name: "age";
-          type: "u16";
-        },
-        {
-          name: "hobbie";
-          type: {
-            vec: "string";
-          };
-        },
-        {
-          name: "message";
-          type: "string";
-        }
-      ];
-    },
-    {
-      name: "updateSp";
-      discriminator: [119, 184, 133, 165, 252, 8, 55, 68];
-      accounts: [
-        {
-          name: "signer";
-          writable: true;
-          signer: true;
-        },
-        {
-          name: "storagePointer";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [115, 112];
-              },
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "arg";
-                path: "lockerId";
-              },
-              {
-                kind: "arg";
-                path: "spId";
-              }
-            ];
-          };
-        },
-        {
-          name: "locker";
-          writable: true;
-          pda: {
-            seeds: [
-              {
-                kind: "const";
-                value: [108, 111, 99, 107, 101, 114];
-              },
-              {
-                kind: "account";
-                path: "signer";
-              },
-              {
-                kind: "arg";
-                path: "lockerId";
-              }
-            ];
-          };
-        },
-        {
-          name: "systemProgram";
-          address: "11111111111111111111111111111111";
-        }
-      ];
-      args: [
-        {
-          name: "lockerId";
-          type: "u32";
-        },
-        {
-          name: "spId";
-          type: "u32";
-        },
-        {
-          name: "id";
-          type: "u16";
-        },
-        {
-          name: "key";
-          type: {
-            array: ["u8", 32];
-          };
-        }
-      ];
-    }
-  ];
-  accounts: [
-    {
-      name: "locker";
-      discriminator: [74, 246, 6, 113, 249, 228, 75, 169];
-    },
-    {
-      name: "profile";
-      discriminator: [184, 101, 165, 188, 95, 63, 127, 188];
-    },
-    {
-      name: "storagePointer";
-      discriminator: [116, 97, 91, 209, 62, 139, 54, 149];
-    },
-    {
-      name: "vault";
-      discriminator: [211, 8, 232, 43, 2, 152, 117, 119];
-    },
-    {
-      name: "vaultLamport";
-      discriminator: [93, 192, 187, 113, 181, 95, 120, 220];
-    }
-  ];
-  errors: [
-    {
-      code: 6000;
-      name: "profileNotFound";
-      msg: "The specified profile could not be found.";
-    },
-    {
-      code: 6001;
-      name: "profileAlreadyExists";
-      msg: "A profile with the same identifier already exists.";
-    },
-    {
-      code: 6002;
-      name: "lockerNotFound";
-      msg: "The specified locker could not be found.";
-    },
-    {
-      code: 6003;
-      name: "lockerAlreadyExists";
-      msg: "A locker with the same identifier already exists.";
-    },
-    {
-      code: 6004;
-      name: "lockerLimitExceeded";
-      msg: "The maximum number of lockers has been exceeded.";
-    },
-    {
-      code: 6005;
-      name: "storagePointerGroupNotFound";
-      msg: "The specified storage pointer group could not be found.";
-    },
-    {
-      code: 6006;
-      name: "storagePointerGroupAlreadyExists";
-      msg: "A storage pointer group with the same identifier already exists.";
-    },
-    {
-      code: 6007;
-      name: "storagePointerGroupLimitExceeded";
-      msg: "The maximum number of storage pointer groups has been exceeded.";
-    },
-    {
-      code: 6008;
-      name: "dataNotValid";
-      msg: "The provided input data is not valid.";
-    },
-    {
-      code: 6009;
-      name: "unAuthorized";
-      msg: "Not Authorized";
-    },
-    {
-      code: 6010;
-      name: "lamportNotEnough";
-      msg: "Not Enough Lamport or SOL";
-    }
-  ];
-  types: [
-    {
-      name: "locker";
-      type: {
-        kind: "struct";
-        fields: [
-          {
-            name: "owner";
-            type: "pubkey";
-          },
-          {
-            name: "id";
-            type: "u32";
-          },
-          {
-            name: "name";
-            type: "string";
-          },
-          {
-            name: "description";
-            type: "string";
-          },
-          {
-            name: "dataCount";
-            type: "u64";
-          },
-          {
-            name: "size";
-            type: "u32";
-          },
-          {
-            name: "visibility";
-            type: "bool";
-          },
-          {
-            name: "storagePointer";
-            type: {
-              option: "pubkey";
-            };
+            ]
           }
-        ];
-      };
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
     },
     {
-      name: "profile";
-      type: {
-        kind: "struct";
-        fields: [
-          {
-            name: "owner";
-            type: "pubkey";
-          },
-          {
-            name: "name";
-            type: "string";
-          },
-          {
-            name: "age";
-            type: "u16";
-          },
-          {
-            name: "hobbie";
-            type: {
-              vec: "string";
-            };
-          },
-          {
-            name: "message";
-            type: "string";
+      "name": "mUpdateFragment",
+      "discriminator": [
+        75,
+        107,
+        62,
+        218,
+        86,
+        111,
+        221,
+        242
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "fragments",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  102,
+                  114,
+                  97,
+                  103,
+                  109,
+                  101,
+                  110,
+                  116,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              },
+              {
+                "kind": "arg",
+                "path": "fragmentsId"
+              }
+            ]
           }
-        ];
-      };
-    },
-    {
-      name: "storagePointer";
-      type: {
-        kind: "struct";
-        fields: [
-          {
-            name: "owner";
-            type: "pubkey";
-          },
-          {
-            name: "lockerId";
-            type: "u32";
-          },
-          {
-            name: "id";
-            type: "u32";
-          },
-          {
-            name: "data";
-            type: {
-              vec: {
-                array: ["u8", 32];
-              };
-            };
-          },
-          {
-            name: "dataCount";
-            type: "u16";
-          },
-          {
-            name: "nextSp";
-            type: {
-              option: "pubkey";
-            };
+        },
+        {
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              }
+            ]
           }
-        ];
-      };
-    },
-    {
-      name: "vault";
-      type: {
-        kind: "struct";
-        fields: [
-          {
-            name: "owner";
-            type: "pubkey";
-          },
-          {
-            name: "token";
-            type: "u64";
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "relicId",
+          "type": "u32"
+        },
+        {
+          "name": "fragmentsId",
+          "type": "u32"
+        },
+        {
+          "name": "id",
+          "type": "u16"
+        },
+        {
+          "name": "key",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
           }
-        ];
-      };
+        }
+      ]
     },
     {
-      name: "vaultLamport";
-      type: {
-        kind: "struct";
-      };
+      "name": "updatePersonality",
+      "discriminator": [
+        251,
+        230,
+        116,
+        135,
+        110,
+        223,
+        101,
+        63
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "personality",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  101,
+                  114,
+                  115,
+                  111,
+                  110,
+                  97,
+                  108,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "age",
+          "type": "u16"
+        },
+        {
+          "name": "hobbie",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "updateRelic",
+      "discriminator": [
+        75,
+        37,
+        236,
+        186,
+        132,
+        190,
+        45,
+        187
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "relic",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  108,
+                  105,
+                  99
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              },
+              {
+                "kind": "arg",
+                "path": "relicId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "relicId",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "visibillity",
+          "type": "bool"
+        }
+      ]
     }
-  ];
+  ],
+  "accounts": [
+    {
+      "name": "fragments",
+      "discriminator": [
+        46,
+        172,
+        133,
+        254,
+        138,
+        87,
+        236,
+        11
+      ]
+    },
+    {
+      "name": "personality",
+      "discriminator": [
+        6,
+        239,
+        30,
+        187,
+        45,
+        55,
+        195,
+        216
+      ]
+    },
+    {
+      "name": "relic",
+      "discriminator": [
+        221,
+        240,
+        73,
+        58,
+        219,
+        202,
+        233,
+        189
+      ]
+    },
+    {
+      "name": "vault",
+      "discriminator": [
+        211,
+        8,
+        232,
+        43,
+        2,
+        152,
+        117,
+        119
+      ]
+    },
+    {
+      "name": "vaultLamport",
+      "discriminator": [
+        93,
+        192,
+        187,
+        113,
+        181,
+        95,
+        120,
+        220
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "authorityNotify",
+      "discriminator": [
+        168,
+        99,
+        117,
+        62,
+        100,
+        83,
+        102,
+        196
+      ]
+    },
+    {
+      "name": "dataNotify",
+      "discriminator": [
+        91,
+        144,
+        99,
+        36,
+        19,
+        51,
+        243,
+        103
+      ]
+    },
+    {
+      "name": "tokenNotify",
+      "discriminator": [
+        63,
+        245,
+        137,
+        60,
+        209,
+        38,
+        129,
+        8
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "relicInputDataNotValid",
+      "msg": "The provided relic data is invalid. Ensure the fields input is correct."
+    }
+  ],
+  "types": [
+    {
+      "name": "authorityNotify",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "by",
+            "type": "pubkey"
+          },
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "name": "oldAuthority",
+            "type": "pubkey"
+          },
+          {
+            "name": "newAuthority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "dataNotify",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "by",
+            "type": "pubkey"
+          },
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "name": "operation",
+            "type": {
+              "defined": {
+                "name": "operation"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "fragments",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "fragment",
+            "type": {
+              "vec": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          },
+          {
+            "name": "dataAlloc",
+            "type": "u16"
+          },
+          {
+            "name": "nextFragments",
+            "type": {
+              "option": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "operation",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "create"
+          },
+          {
+            "name": "update"
+          },
+          {
+            "name": "delete"
+          }
+        ]
+      }
+    },
+    {
+      "name": "personality",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "age",
+            "type": "u16"
+          },
+          {
+            "name": "hobbie",
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "message",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "relic",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "heir",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "dataCount",
+            "type": "u64"
+          },
+          {
+            "name": "size",
+            "type": "u32"
+          },
+          {
+            "name": "visibility",
+            "type": "bool"
+          },
+          {
+            "name": "fragments",
+            "type": {
+              "option": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "tokenNotify",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "by",
+            "type": "pubkey"
+          },
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "vault",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "token",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "vaultLamport",
+      "type": {
+        "kind": "struct",
+        "fields": []
+      }
+    }
+  ]
 };
