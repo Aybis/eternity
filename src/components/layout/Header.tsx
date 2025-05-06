@@ -1,21 +1,41 @@
 'use client';
 import ThemeToggle from '@/theme/theme-toggle';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function Header() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Prevent SSR hydration mismatch
+    return null;
+  }
+
   return (
-    <nav className="fixed w-full bg-white/30 backdrop-blur-sm bg-opacity-95 z-50 border-b border-gray-100 shadow-sm dark:bg-zinc-950/30 dark:border-zinc-700 ">
+    <nav className="fixed top-0 w-full bg-white/30 backdrop-blur-sm bg-opacity-95 z-50  shadow-sm dark:bg-zinc-950/30 dark:border-zinc-700 ">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 ">
         {/* Menu Content  */}
         <div className="flex justify-between items-center py-4">
           {/* Header Logo */}
           <div
             onClick={() => {
-              window.location.href = '/';
+              window.location.href = '/waitlist';
             }}
             className="flex items-center cursor-pointer"
           >
-            <Image src="/engramind.svg" alt="Logo" width={120} height={80} />
+            <Image
+              src={theme === 'light' ? '/engramind.svg' : '/engramindDark.svg'}
+              alt="Logo"
+              width={120}
+              height={80}
+              priority
+            />
           </div>
 
           {/* Button Get Started */}
