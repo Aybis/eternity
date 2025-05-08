@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-export default function Header() {
+export default function Header({ isFixed }: { isFixed?: boolean }) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -18,14 +18,19 @@ export default function Header() {
   }
 
   return (
-    <nav className="fixed top-0 w-full bg-white/30 backdrop-blur-sm bg-opacity-95 z-50  shadow-sm dark:bg-zinc-950/30 dark:border-zinc-700 ">
+    <nav
+      className={[
+        isFixed ? 'fixed z-50 top-0  ' : 'relative md:absolute z-10',
+        'w-full inset-x-0 bg-white backdrop-blur-sm bg-opacity-95 dark:bg-zinc-950/30 dark:border-zinc-700 ',
+      ].join(' ')}
+    >
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-4 ">
         {/* Menu Content  */}
         <div className="flex justify-between items-center py-4">
           {/* Header Logo */}
           <div
             onClick={() => {
-              window.location.href = '/waitlist';
+              window.location.href = '/';
             }}
             className="flex items-center cursor-pointer"
           >
