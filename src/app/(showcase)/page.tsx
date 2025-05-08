@@ -20,15 +20,15 @@ import React from 'react';
 import { JSX } from 'react/jsx-runtime';
 
 const Header = () => (
-  <header className="w-full border-b bg-white dark:bg-neutral-900 dark:border-neutral-800">
+  <header className="w-full border-b bg-white dark:bg-zinc-800 dark:border-neutral-800">
     <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div className="text-lg font-bold text-purple-600 dark:text-purple-400">
         Relics
       </div>
-      <nav className="hidden md:flex gap-6 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+      <nav className="hidden md:flex gap-6 text-md text-gray-700 dark:text-gray-300 leading-relaxed">
         <a
           href="#"
-          className="hover:text-purple-600 dark:hover:text-purple-400 text-purple-500 font-medium"
+          className="hover:text-purple-600 dark:hover:text-purple-400 text-purple-500 font-semibold"
         >
           Relics Showcase
         </a>
@@ -213,9 +213,9 @@ const SearchBar = () => (
     <input
       type="text"
       placeholder="Search Relic..."
-      className="flex-1 px-4 py-2 border rounded-md dark:bg-neutral-700 dark:border-neutral-200 border-zinc-400 dark:text-neutral-100"
+      className="flex-1 px-4 py-2 border rounded-md dark:bg-neutral-700 border-zinc-400 dark:text-neutral-100 dark:border-zinc-700"
     />
-    <select className="border rounded-md px-3 py-2 dark:bg-neutral-700 dark:border-neutral-200 border-zinc-400 dark:text-neutral-100 appearance-auto">
+    <select className="border rounded-md px-3 py-2 dark:bg-neutral-700 dark:border-zinc-700 border-zinc-400 dark:text-neutral-100 appearance-auto">
       <option>Sort by Role</option>
     </select>
   </div>
@@ -229,7 +229,7 @@ const RelicCard = ({
   followers,
   rating,
 }: (typeof relics)[0]) => (
-  <div className=" dark:bg-neutral-800 border border-zinc-200 rounded-lg p-4 hover hover:shadow-lg shadow-none transition-all duration-300 hover:border-purple-500">
+  <div className=" dark:bg-neutral-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-4 hover hover:shadow-lg shadow-none transition-all duration-300 hover:border-purple-500">
     <Image
       src={image}
       width={400}
@@ -280,7 +280,7 @@ const RelicCard = ({
 
 export default function Page() {
   return (
-    <div className="relative bg-zinc-100 min-h-screen overflow-auto">
+    <div className="relative bg-zinc-50 dark:bg-zinc-900 min-h-screen overflow-auto">
       <Header />
       <div className="max-w-7xl mx-auto px-4 py-10 text-neutral-900 dark:text-neutral-100">
         <h1 className="text-3xl font-bold mb-2">Welcome Back, John Doe</h1>
