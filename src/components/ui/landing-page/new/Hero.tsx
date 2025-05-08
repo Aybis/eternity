@@ -11,7 +11,10 @@ export default function Hero() {
   ];
 
   return (
-    <section className="pt-24 pb-12 container mx-auto px-4 lg:max-w-6xl">
+    <section
+      id="features"
+      className="pt-24 pb-12 container mx-auto px-4 lg:max-w-6xl"
+    >
       <div className="flex flex-col items-center justify-center gap-y-4">
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold text-zinc-800 dark:text-zinc-100 text-center">
           Secure Your <span className="text-purple-700">Legacy.</span>

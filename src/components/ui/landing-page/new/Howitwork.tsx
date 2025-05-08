@@ -2,7 +2,10 @@ import React from 'react';
 
 export default function Howitwork() {
   return (
-    <section className="mx-auto max-w-6xl container py-12 mt-12 px-4 sm:px-6 lg:px-8">
+    <section
+      id="how-it-works"
+      className="mx-auto max-w-6xl container py-12 mt-12 px-4 sm:px-6 lg:px-8"
+    >
       <div className="flex flex-col justify-center items-center text-center">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-relaxed text-zinc-800 dark:text-zinc-100">
           How Eternity Chain Works
