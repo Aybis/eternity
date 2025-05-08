@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 const Header = () => (
   <header className="w-full border-b bg-white dark:bg-neutral-900 dark:border-neutral-800">
