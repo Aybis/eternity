@@ -1,6 +1,6 @@
 'use client';
 import ThemeToggle from '@/theme/theme-toggle';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MobileNavLink, NavLink } from '../ui/HelperComponents';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,6 +13,17 @@ type NavbarProps = {
 export default function Navbar({ showMenu }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Prevent SSR hydration mismatch
+    return null;
+  }
 
   return (
     <nav className="fixed w-full bg-white/30 backdrop-blur-sm bg-opacity-95 z-50 border-b border-gray-100 shadow-sm dark:bg-zinc-950/30 dark:border-zinc-700 ">
