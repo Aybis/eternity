@@ -1,26 +1,27 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { QueryProvider } from "@/components/query-provider";
-import { Suspense } from "react";
-import ThemeProvider from "@/theme/theme-provider";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+import { QueryProvider } from '@/components/query-provider';
+import { Suspense } from 'react';
+import ThemeProvider from '@/theme/theme-provider';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Web3Provider } from '@/components/web3-provider';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Engramind",
+  title: 'Engramind',
   description:
-    "Turn your life memories into a living, interactive AI bound forever on the blockchain.",
+    'Turn your life memories into a living, interactive AI bound forever on the blockchain.',
 };
 
 export default function RootLayout({
@@ -34,24 +35,26 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
         <QueryProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Suspense
-              fallback={
-                <div className="flex items-center justify-center h-screen">
-                  Loading...
-                </div>
-              }
+          <Web3Provider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
             >
-              {children}
-              <Analytics />
-              <SpeedInsights />
-            </Suspense>
-          </ThemeProvider>
+              <Suspense
+                fallback={
+                  <div className="flex items-center justify-center h-screen">
+                    Loading...
+                  </div>
+                }
+              >
+                {children}
+                <Analytics />
+                <SpeedInsights />
+              </Suspense>
+            </ThemeProvider>
+          </Web3Provider>
         </QueryProvider>
       </body>
     </html>

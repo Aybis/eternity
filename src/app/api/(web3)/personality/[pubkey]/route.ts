@@ -1,6 +1,6 @@
-import Web3Utils from "@/utils/web3";
-import { translateAddress } from "@coral-xyz/anchor";
-import { NextRequest } from "next/server";
+import Web3Utils from '@/utils/web3';
+import { translateAddress } from '@coral-xyz/anchor';
+import { NextRequest } from 'next/server';
 
 type ProfileReq = {
   name: string;
@@ -26,21 +26,21 @@ export async function GET(_: NextRequest, context: any) {
   if (!data || data.length === 0) {
     return new Response(
       JSON.stringify({
-        message: "Profile not found!",
+        message: 'Profile not found!',
         data: null,
       }),
       {
         status: 404,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
   }
 
   return new Response(
     JSON.stringify({
-      message: "Profile fetched successfully!",
+      message: 'Profile fetched successfully!',
       data: {
         name: data[0].account.name,
         age: data[0].account.age,
@@ -53,9 +53,9 @@ export async function GET(_: NextRequest, context: any) {
     {
       status: 200,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-    }
+    },
   );
 }
 
@@ -78,15 +78,15 @@ export async function PUT(req: NextRequest, context: any) {
 
   return new Response(
     JSON.stringify({
-      message: "Profile updated successfully!",
-      data: tx.serialize({ requireAllSignatures: false }).toString("base64"),
+      message: 'Profile updated successfully!',
+      data: tx.serialize({ requireAllSignatures: false }).toString('base64'),
     }),
     {
       status: 200,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-    }
+    },
   );
 }
 
@@ -109,14 +109,14 @@ export async function POST(req: NextRequest, context: any) {
 
   return new Response(
     JSON.stringify({
-      message: "Profile created successfully!",
-      data: tx.serialize({ requireAllSignatures: false }).toString("base64"),
+      message: 'Profile created successfully!',
+      data: tx.serialize({ requireAllSignatures: false }).toString('base64'),
     }),
     {
       status: 201,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-    }
+    },
   );
 }
