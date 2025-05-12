@@ -14,50 +14,29 @@ export default function Home() {
           </h1>
 
           <form className="space-y-4">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium mb-1 dark:text-zinc-200"
-              >
-                Your Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                placeholder="Johnny Silverhand"
-                className="w-full border border-zinc-300 dark:border-zinc-600 rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-gray-900 dark:text-white outline-none"
-              />
-            </div>
+            <InputField
+              id="name"
+              label="Your Name"
+              type="text"
+              placeholder="Johnny Silverhand"
+              required
+            />
 
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium mb-1 dark:text-zinc-200"
-              >
-                Your Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                placeholder="johnny@example.com"
-                className="w-full border border-zinc-300 dark:border-zinc-600 rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-gray-900 dark:text-white outline-none"
-              />
-            </div>
+            <InputField
+              id="email"
+              label="Your Email"
+              type="email"
+              placeholder="johnny@example.com"
+              required
+            />
 
-            <div>
-              <label
-                htmlFor="birthdate"
-                className="block text-sm font-medium mb-1 dark:text-zinc-200"
-              >
-                Your Birthdate <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="birthdate"
-                placeholder="January 23rd, 2023"
-                className="w-full border border-zinc-300 dark:border-zinc-600 rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-gray-900 dark:text-white outline-none"
-              />
-            </div>
+            <InputField
+              id="birthdate"
+              label="Your Birthdate"
+              type="text"
+              placeholder="January 23rd, 2023"
+              required
+            />
 
             <div>
               <label
@@ -77,20 +56,13 @@ export default function Home() {
               </select>
             </div>
 
-            <div>
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium mb-1 dark:text-zinc-200"
-              >
-                Your Phone Number <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                placeholder="+62 812-3456-7890"
-                className="w-full border border-zinc-300 dark:border-zinc-600 rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-gray-900 dark:text-white outline-none"
-              />
-            </div>
+            <InputField
+              id="phone"
+              label="Your Phone Number"
+              type="tel"
+              placeholder="+62 812-3456-7890"
+              required
+            />
 
             <Link href={'/auth/register/ai'}>
               <div className=" w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-md transition text-center">
@@ -114,3 +86,37 @@ export default function Home() {
     </div>
   );
 }
+
+// Define the InputFieldProps interface
+interface InputFieldProps {
+  id: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  required?: boolean;
+}
+
+const InputField: React.FC<InputFieldProps> = ({
+  id,
+  label,
+  type,
+  placeholder,
+  required = false,
+}) => {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="block text-sm font-medium mb-1 dark:text-zinc-200"
+      >
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <input
+        type={type}
+        id={id}
+        placeholder={placeholder}
+        className="w-full border border-zinc-300 dark:border-zinc-600 rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-gray-900 dark:text-white outline-none"
+      />
+    </div>
+  );
+};
