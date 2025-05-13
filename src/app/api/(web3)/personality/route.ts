@@ -1,14 +1,13 @@
-import Web3Utils from "@/utils/web3";
-import { NextRequest } from "next/server";
+import Web3Utils from '@/utils/web3';
 
-export async function GET(_: NextRequest) {
+export async function GET() {
   const data = await Web3Utils.getInstance()
     .getProgram()
     .account.personality.all();
 
   return new Response(
     JSON.stringify({
-      message: "Profiles fetched successfully!",
+      message: 'Profiles fetched successfully!',
       data: data.map((item) => {
         return {
           name: item.account.name,
@@ -23,8 +22,8 @@ export async function GET(_: NextRequest) {
     {
       status: 200,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-    }
+    },
   );
 }

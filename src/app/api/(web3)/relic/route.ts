@@ -1,29 +1,28 @@
-import Web3Utils from "@/utils/web3";
-import { NextRequest } from "next/server";
+import Web3Utils from '@/utils/web3';
 
-export async function GET(_: NextRequest) {
+export async function GET() {
   const data = await Web3Utils.getInstance().getProgram().account.relic.all();
 
   if (!data || data.length === 0) {
     return new Response(
       JSON.stringify({
         error: true,
-        message: "No relics found!",
+        message: 'No relics found!',
         data: null,
       }),
       {
         status: 404,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
   }
 
   return new Response(
     JSON.stringify({
       error: false,
-      message: "Relics fetched successfully!",
+      message: 'Relics fetched successfully!',
       data: data.map((item) => {
         return {
           name: item.account.name,
@@ -36,8 +35,8 @@ export async function GET(_: NextRequest) {
     {
       status: 200,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-    }
+    },
   );
 }

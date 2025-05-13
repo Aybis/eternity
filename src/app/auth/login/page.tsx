@@ -1,9 +1,17 @@
+'use client';
+
 import Navbar from '@/components/layout/Navbar';
 import { Mail } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-const EmailInput = () => (
+interface EmailInputProps {
+  form: { email: string; password: string };
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const EmailInput = ({ form, handleChange }: EmailInputProps) => (
   <div>
     <label
       htmlFor="email"
@@ -18,17 +26,27 @@ const EmailInput = () => (
         id="email"
         placeholder="ava.wright@gmail.com"
         className="w-full bg-transparent outline-none text-sm text-gray-900 dark:text-white"
+        value={form.email}
+        onChange={handleChange}
+      />
+    </div>
+    <label
+      htmlFor="password"
+      className="block text-sm font-medium mb-1 dark:text-zinc-200"
+    >
+      Your Password <span className="text-red-500">*</span>
+    </label>
+    <div className="flex items-center border rounded-md px-3 py-2 mb-4 bg-white dark:bg-zinc-800 border-zinc-300 dark:border-zinc-600">
+      <input
+        type="password"
+        id="password"
+        placeholder="********"
+        className="w-full bg-transparent outline-none text-sm text-gray-900 dark:text-white"
+        value={form.password}
+        onChange={handleChange}
       />
     </div>
   </div>
-);
-
-const ContinueButton = () => (
-  <Link href={'/dashboard'}>
-    <div className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-md mb-4 transition text-center">
-      Continue
-    </div>
-  </Link>
 );
 
 const GoogleButton = () => (
@@ -47,32 +65,66 @@ const GoogleButton = () => (
 const TermsAndPrivacy = () => (
   <p className="text-xs text-center mt-4 text-zinc-500 dark:text-zinc-400">
     By joining, you agree to our{' '}
-    <a href="#" className="text-purple-600 hover:underline">
-      Terms of Service
-    </a>{' '}
-    and{' '}
-    <a href="#" className="text-purple-600 hover:underline">
-      Privacy
-    </a>
+    <span className="text-purple-600 hover:underline">Terms of Service</span>{' '}
+    and <span className="text-purple-600 hover:underline">Privacy</span>
   </p>
 );
 
-const LoginCard = () => (
-  <div className="max-w-md w-full bg-white dark:bg-zinc-900 p-8 rounded-2xl border border-zinc-200 dark:border-zinc-700 shadow-sm">
-    <h1 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6">
-      <span className="">One sign-up.</span>
-      <br />
-      <span className="">A lifetime of impact.</span>
-    </h1>
-    <EmailInput />
-    <ContinueButton />
-    <div className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-4">
-      Or continue with your preferred provider
+const LoginCard = () => {
+  const router = useRouter();
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/user/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        router.push('/dashboard');
+      } else {
+        alert(result.message || 'Login failed');
+      }
+    } catch (error) {
+      console.log(error, '<<< error');
+      alert('Something went wrong.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="max-w-md w-full bg-white dark:bg-zinc-900 p-8 rounded-2xl border border-zinc-200 dark:border-zinc-700 shadow-sm">
+      <h1 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+        <span className="">One sign-up.</span>
+        <br />
+        <span className="">A lifetime of impact.</span>
+      </h1>
+      <EmailInput form={form} handleChange={handleChange} />
+      <button
+        onClick={handleLogin}
+        disabled={loading}
+        className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-md mb-4 transition text-center"
+      >
+        {loading ? 'Logging in...' : 'Continue'}
+      </button>
+      <div className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-4">
+        Or continue with your preferred provider
+      </div>
+      <GoogleButton />
+      <TermsAndPrivacy />
     </div>
-    <GoogleButton />
-    <TermsAndPrivacy />
-  </div>
-);
+  );
+};
 
 export default function Home() {
   return (

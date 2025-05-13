@@ -9,6 +9,7 @@ type ProfileReq = {
   message: string;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function GET(_: NextRequest, context: any) {
   const pubkey = (await context.params).pubkey;
 
@@ -59,6 +60,7 @@ export async function GET(_: NextRequest, context: any) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function PUT(req: NextRequest, context: any) {
   const body: ProfileReq = await req.json();
   const pubkey = (await context.params).pubkey;
@@ -89,7 +91,7 @@ export async function PUT(req: NextRequest, context: any) {
     },
   );
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function POST(req: NextRequest, context: any) {
   const body: ProfileReq = await req.json();
   const pubkey = (await context.params).pubkey;

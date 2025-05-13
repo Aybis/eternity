@@ -1,7 +1,7 @@
-import { AnchorProvider, Program, Provider } from "@coral-xyz/anchor";
-import { clusterApiUrl, Connection } from "@solana/web3.js";
-import { EternitySc } from "./web3/idl";
-import idl from "./web3/idl.json";
+import { AnchorProvider, Program, Provider, Wallet } from '@coral-xyz/anchor';
+import { Connection } from '@solana/web3.js';
+import { EternitySc } from './web3/idl';
+import idl from './web3/idl.json';
 
 class Web3Utils {
   private static program: Program<EternitySc> | null = null;
@@ -23,7 +23,7 @@ class Web3Utils {
     if (!Web3Utils.program) {
       Web3Utils.program = new Program<EternitySc>(
         idl as EternitySc,
-        this.getProvider()
+        this.getProvider(),
       );
     }
     return Web3Utils.program;
@@ -32,8 +32,8 @@ class Web3Utils {
   public getConnection() {
     if (!Web3Utils.connection) {
       Web3Utils.connection = new Connection(
-        "http://localhost:8899",
-        "confirmed"
+        'http://localhost:8899',
+        'confirmed',
       );
     }
 
@@ -42,7 +42,10 @@ class Web3Utils {
 
   public getProvider() {
     if (!Web3Utils.provider) {
-      Web3Utils.provider = new AnchorProvider(this.getConnection(), {} as any);
+      Web3Utils.provider = new AnchorProvider(
+        this.getConnection(),
+        {} as Wallet,
+      );
     }
 
     return Web3Utils.provider;
