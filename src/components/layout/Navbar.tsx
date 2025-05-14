@@ -15,9 +15,12 @@ export default function Navbar({ showMenu }: NavbarProps) {
   const { theme } = useTheme();
 
   const [mounted, setMounted] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const hasSession = document.cookie.includes('session=');
+    setIsLoggedIn(hasSession);
   }, []);
 
   if (!mounted) {
@@ -56,24 +59,26 @@ export default function Navbar({ showMenu }: NavbarProps) {
           )}
 
           {/* Button Get Started */}
-          <div className="hidden md:flex items-center space-x-8">
-            <div className="flex gap-x-2">
-              <Link
-                href={'/auth/login'}
-                className="px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
-                Login
-              </Link>
-              <Link
-                href={'/auth/register'}
-                className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm hover:from-purple-700 hover:to-indigo-700 transition-colors"
-              >
-                Sign Up
-              </Link>
-            </div>
+          {!isLoggedIn && (
+            <div className="hidden md:flex items-center space-x-8">
+              <div className="flex gap-x-2">
+                <Link
+                  href={'/auth/login'}
+                  className="px-4 py-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  href={'/auth/register'}
+                  className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm hover:from-purple-700 hover:to-indigo-700 transition-colors"
+                >
+                  Sign Up
+                </Link>
+              </div>
 
-            <ThemeToggle />
-          </div>
+              <ThemeToggle />
+            </div>
+          )}
 
           {/* Menu Hamburger */}
           <div className="md:hidden">

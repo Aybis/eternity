@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,11 +36,47 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    return NextResponse.json({
+    const accessToken = jwt.sign(
+      { name: userData.name, email: userData.email },
+      process.env.JWT_SECRET!,
+      { expiresIn: '1d' },
+    );
+
+    const refreshToken = crypto.randomUUID();
+
+    const response = NextResponse.json({
       success: true,
       message: 'Login successful',
       userId: userDoc.id,
+      name: userData.name,
+      accessToken,
     });
+
+    response.cookies.set('session', 'true', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/',
+      maxAge: 60 * 60 * 24, // 1 day
+    });
+
+    response.cookies.set('access_token', accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/',
+      maxAge: 60 * 60 * 24, // 1 day
+    });
+
+    response.cookies.set('refresh_token', refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+    });
+
+    return response;
   } catch (error: unknown) {
     const errorMessage =
       error instanceof Error ? error.message : 'Unknown error';

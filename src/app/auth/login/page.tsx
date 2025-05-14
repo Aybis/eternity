@@ -90,7 +90,7 @@ const LoginCard = () => {
 
       const result = await res.json();
       if (result.success) {
-        router.push('/dashboard');
+        router.push('/showcase');
       } else {
         alert(result.message || 'Login failed');
       }

@@ -1,5 +1,5 @@
 import { AnchorProvider, Program, Provider, Wallet } from '@coral-xyz/anchor';
-import { Connection } from '@solana/web3.js';
+import { clusterApiUrl, Connection } from '@solana/web3.js';
 import { EternitySc } from './web3/idl';
 import idl from './web3/idl.json';
 
@@ -32,7 +32,7 @@ class Web3Utils {
   public getConnection() {
     if (!Web3Utils.connection) {
       Web3Utils.connection = new Connection(
-        'http://localhost:8899',
+        clusterApiUrl('devnet'),
         'confirmed',
       );
     }
