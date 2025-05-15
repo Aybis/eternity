@@ -1,8 +1,10 @@
 'use client';
 
+import Relic from '@/components/ui/showcase/Relic';
 import WalletModal from '@/components/ui/wallet/WalletModal';
 import { GalleryVerticalEndIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 function Button({
@@ -43,18 +45,20 @@ export default function Dashboard() {
   return (
     <div className="flex h-screen bg-white dark:bg-zinc-950 text-zinc-800">
       {/* Sidebar */}
-      <aside className="w-60 border-r border-zinc-200 dark:border-zinc-800 p-4 flex flex-col justify-between">
+      <aside className="w-60 fixed h-screen overflow-auto border-r border-zinc-200 dark:border-zinc-800 p-4 flex flex-col justify-between">
         <div>
           <div className=" mb-4 flex gap-x-2 items-center">
             <GalleryVerticalEndIcon className="w-8 h-8 text-white bg-zinc-900 p-2 rounded-lg" />
             <div>
-              <h4 className="text-base -mb-1 font-semibold">Eternity Chain</h4>
+              <h4 className="text-base -mb-1 font-semibold">Engramind</h4>
               <p className="text-sm font-light">Personal</p>
             </div>
           </div>
           <WalletModal />
 
-          <div className="text-xs uppercase text-zinc-500 mb-2">Platform</div>
+          <div className="text-xs uppercase text-zinc-500 mb-2 mt-4">
+            Platform
+          </div>
           <nav className="space-y-2 text-sm">
             {[
               { label: 'Memory Locker', icon: '🧠', active: true },
@@ -98,7 +102,7 @@ export default function Dashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-6 w-full">
+      <main className="flex-1 p-6 w-full ml-60">
         <div className="flex items-cente justify-center gap-4 mb-6 inset-x-0 ">
           <Button variant="outline" className="text-sm">
             Available Locker: 0
@@ -117,8 +121,19 @@ export default function Dashboard() {
           </Button>
         </div>
 
-        <div className="text-center mt-40 text-zinc-400 text-xl">
-          All quiet here… ready to build something cool?
+        <div>
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              List Persona
+            </h2>
+            <Link
+              href={'/showcase'}
+              className="text-sm font-semibold text-zinc-800 dark:text-zinc-300 underline"
+            >
+              Go to Showcase
+            </Link>
+          </div>
+          <Relic />
         </div>
       </main>
     </div>

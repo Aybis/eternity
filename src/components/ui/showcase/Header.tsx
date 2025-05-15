@@ -25,7 +25,7 @@ export const Header = (
   };
 
   return (
-    <header className="w-full border-b bg-white dark:bg-zinc-800 dark:border-neutral-800">
+    <header className="w-full border-b border-zinc-200 bg-white/50 backdrop-blur-sm dark:bg-zinc-800 dark:border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-lg font-bold text-purple-600 dark:text-purple-400">
           Personas
@@ -59,14 +59,15 @@ export const Header = (
           </Link>
         </nav>
         <div className="flex gap-4 items-center relative">
-          <div className="text-sm text-purple-600 dark:text-purple-300 capitalize">
+          <div className="text-sm text-purple-600 dark:text-purple-300 capitalize font-semibold">
             Hi, {name}
           </div>
           <BellDot className="text-purple-600 dark:text-purple-400" />
           <Image
+            onClick={() => router.push('/dashboard')}
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Profile"
-            className="rounded-full w-8 h-8"
+            className="rounded-full w-8 h-8 cursor-pointer hover:shadow-lg transition-all duration-300"
             width={400}
             height={300}
           />

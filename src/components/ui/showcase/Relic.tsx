@@ -71,7 +71,7 @@ export default function Relic() {
               <div
                 key={item.id}
                 onClick={() => handleSelectedScenario(item)}
-                className="bg-zinc-800 w-full h-full rounded-xl shadow-lg cursor-pointer transition-all duration-300 hover:opacity-60"
+                className="dark:bg-zinc-800 bg-zinc-200 w-full h-full rounded-xl shadow-lg cursor-pointer transition-all duration-300 hover:opacity-60"
               >
                 <Image
                   src={`https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
@@ -82,10 +82,10 @@ export default function Relic() {
                 />
                 <div className="p-4  ">
                   <>
-                    <h3 className="text-base font-semibold text-white">
+                    <h3 className="text-base font-semibold dark:text-white text-zinc-800">
                       {item.name}
                     </h3>
-                    <p className="text-sm text-zinc-200 font-medium">
+                    <p className="text-sm dark:text-zinc-200 text-zinc-700 font-medium">
                       {JSON.parse(item.description)?.charactersName}
                       <span
                         className={[

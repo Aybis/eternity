@@ -17,9 +17,9 @@ export default function ModalDetailRelic({
       onClick={() => setSelectedScenario(null)}
     >
       <div className="flex items-center justify-center h-screen ">
-        <div className="max-w-6xl bg-zinc-900 rounded-xl shadow-lg p-6">
+        <div className="max-w-6xl bg-zinc-200 dark:bg-zinc-900 rounded-xl shadow-lg p-6">
           {/* Heading  */}
-          <div className="flex justify-between items-center text-sm border border-zinc-800 rounded-full p-2 bg-zinc-800">
+          <div className="flex justify-between items-center text-sm border border-zinc-200 dark:border-zinc-800 rounded-full p-2 dark:bg-zinc-800 bg-zinc-300">
             {/* Icon Solana */}
             <div className="flex items-center gap-x-2">
               <Image
@@ -32,11 +32,11 @@ export default function ModalDetailRelic({
               <p className="text-lg font-medium">30</p>
             </div>
             {/* Title */}
-            <p className="font-bold text-center text-white italic">
+            <p className="font-bold text-center dark:text-white text-zinc-800 italic">
               You need 10 credits to start a roleplay session.
             </p>
             {/* Button Purchase */}
-            <button className="bg-purple-500 text-white font-medium px-4 py-2 rounded-full">
+            <button className="bg-purple-500 cursor-pointer text-white font-medium px-4 py-2 rounded-full hover:bg-purple-600 transition duration-200">
               Purchase more credits
             </button>
           </div>
@@ -54,11 +54,11 @@ export default function ModalDetailRelic({
               <h2 className="text-xl font-semibold">
                 {selectedScenario?.name}
               </h2>
-              <p className="text-base italic text-zinc-300">
+              <p className="text-base italic dark:text-zinc-300 text-zinc-800 ">
                 My Name {detailDescription?.charactersName}, I am{' '}
                 {detailDescription?.charactersAge} years old.
               </p>
-              <p className="text-sm text-zinc-400">
+              <p className="text-sm dark:text-zinc-400 text-zinc-700">
                 {detailDescription?.charactersBackground}
               </p>
             </div>
@@ -67,30 +67,30 @@ export default function ModalDetailRelic({
           {/* Description */}
           <div>
             <div className="mt-4">
-              <h3 className="font-semibold text-zinc-200 mb-2">
+              <h3 className="font-semibold dark:text-zinc-200 text-zinc-800 mb-2">
                 Character Details
               </h3>
-              <p className="text-sm text-zinc-400">
+              <p className="text-sm dark:text-zinc-400 text-zinc-700">
                 Gender : {detailDescription?.charactersGender}
               </p>
-              <p className="text-sm text-zinc-400">
+              <p className="text-sm dark:text-zinc-400 text-zinc-700">
                 Occupation :{detailDescription?.charactersOccupation}{' '}
               </p>
             </div>
 
             <div className="mt-4">
-              <h3 className="font-semibold text-zinc-200 mb-2">
+              <h3 className="font-semibold dark:text-zinc-200 text-zinc-800 mb-2">
                 Scenario Details
               </h3>
-              <p className="text-sm text-zinc-300 font-semibold">
+              <p className="text-sm dark:text-zinc-300 text-zinc-700 font-semibold">
                 Scenario Snippet :{' '}
-                <span className="font-normal text-zinc-400">
+                <span className="font-normal dark:text-zinc-400 text-zinc-700">
                   {detailDescription?.charactersScenarioSnippet}
                 </span>
               </p>
-              <p className="text-sm text-zinc-300 font-semibold mt-2">
-                Relevance To Scenario :
-                <span className="font-normal text-zinc-400">
+              <p className="text-sm dark:text-zinc-300 text-zinc-700 font-semibold mt-2">
+                Relevance To Persona :{' '}
+                <span className="font-normal dark:text-zinc-400 text-zinc-700">
                   {detailDescription?.charactersRelevanceToScenario}
                 </span>
               </p>
