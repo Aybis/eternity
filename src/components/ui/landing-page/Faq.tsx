@@ -22,7 +22,7 @@ export default function Faq() {
 
           <FaqItem
             question="How accurate is my AI twin?"
-            answer="The accuracy depends on the quality and quantity of data you provide. Most users report that their Elwyn AI captures 85-95% of their personality and communication style after uploading sufficient data. The AI continues to improve as you add more content."
+            answer="The accuracy depends on the quality and quantity of data you provide. Most users report that their AI captures 85-95% of their personality and communication style after uploading sufficient data. The AI continues to improve as you add more content."
           />
 
           <FaqItem

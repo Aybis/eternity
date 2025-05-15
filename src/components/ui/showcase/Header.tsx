@@ -1,51 +1,106 @@
+'use client';
 import { BellDot } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-export const Header = async (
+export const Header = (
   { name }: { name: string } = { name: 'User' }, // Default value for name
 ) => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    document.cookie.split(';').forEach((c) => {
+      document.cookie = c
+        .replace(/^ +/, '')
+        .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+    });
+    router.push('/');
+  };
+
   return (
     <header className="w-full border-b bg-white dark:bg-zinc-800 dark:border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-lg font-bold text-purple-600 dark:text-purple-400">
-          Relics
+          Personas
         </div>
         <nav className="hidden md:flex gap-6 text-md text-gray-700 dark:text-gray-300 leading-relaxed">
-          <a
-            href="#"
-            className="hover:text-purple-600 dark:hover:text-purple-400 text-purple-500 font-semibold"
+          <Link
+            href="/showcase"
+            className={`hover:text-purple-600 dark:hover:text-purple-400 ${
+              pathname === '/showcase' ? 'text-purple-600 font-bold' : ''
+            }`}
           >
-            Relics Showcase
-          </a>
-          <a
-            href="#"
-            className="hover:text-purple-600 dark:hover:text-purple-400"
+            Persona Showcase
+          </Link>
+          <Link
+            href="/showcase/how-it-works"
+            className={`hover:text-purple-600 dark:hover:text-purple-400 ${
+              pathname === '/showcase/how-it-works'
+                ? 'text-purple-600 font-bold'
+                : ''
+            }`}
           >
             How It Works
-          </a>
-          <a
-            href="#"
-            className="hover:text-purple-600 dark:hover:text-purple-400"
+          </Link>
+          <Link
+            href="/showcase/faq"
+            className={`hover:text-purple-600 dark:hover:text-purple-400 ${
+              pathname === '/showcase/faq' ? 'text-purple-600 font-bold' : ''
+            }`}
           >
             FAQ
-          </a>
+          </Link>
         </nav>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center relative">
           <div className="text-sm text-purple-600 dark:text-purple-300 capitalize">
             Hi, {name}
           </div>
           <BellDot className="text-purple-600 dark:text-purple-400" />
-          <button>
-            <Image
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Profile"
-              className="rounded-full w-8 h-8"
-              width={400}
-              height={300}
-            />
+          <Image
+            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Profile"
+            className="rounded-full w-8 h-8"
+            width={400}
+            height={300}
+          />
+          <button
+            onClick={() => setShowConfirm(true)}
+            className="text-sm text-red-600 dark:text-red-400 hover:underline cursor-pointer transition"
+          >
+            Logout
           </button>
         </div>
       </div>
+      {showConfirm && (
+        <div className="fixed inset-0 z-50 bg-zinc-900/50 backdrop-blur-sm flex items-center justify-center">
+          <div className="bg-white dark:bg-zinc-800 p-6 shadow-md text-center rounded-lg">
+            <p className="text-lg mb-4 text-zinc-800 font-semibold dark:text-zinc-100">
+              Are you sure you want to logout?
+            </p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 cursor-pointer bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setShowConfirm(false)}
+                className="px-4 py-2 cursor-pointer bg-gray-300 dark:bg-zinc-700 text-gray-900 dark:text-white rounded hover:bg-gray-400 dark:hover:bg-zinc-600"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

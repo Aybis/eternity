@@ -24,7 +24,7 @@ export default function Testimoni() {
           />
 
           <TestimonialCard
-            quote="My Elwyn AI is already generating revenue by sharing my business insights. It's amazing to see my digital twin helping others."
+            quote="My Engram AI is already generating revenue by sharing my business insights. It's amazing to see my digital twin helping others."
             name="Sophia R."
             title="Tech Entrepreneur"
             initial="S"

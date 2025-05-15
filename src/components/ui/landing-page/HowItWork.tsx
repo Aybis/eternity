@@ -28,7 +28,7 @@ export default function HowItWork() {
           <StepCard
             number={3}
             title="Meet Your AI Twin"
-            description="Watch as our AI creates your digital twin 'Elwyn' that preserves your personality and wisdom."
+            description="Watch as our AI creates your digital twin 'Engramind' that preserves your personality and wisdom."
           />
         </div>
       </div>

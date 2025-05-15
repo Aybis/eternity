@@ -31,7 +31,7 @@ export default function Testimoni() {
               role: 'Tech Entrepreneur',
               avatar: '/assets/avatar/avatar2.png',
               testimonial:
-                "My Elwyn AI is already generating revenue by sharing my business insights. It's amazing to see my digital twin helping others.",
+                "My Engram AI is already generating revenue by sharing my business insights. It's amazing to see my digital twin helping others.",
             },
             {
               name: 'Joceline Ann',

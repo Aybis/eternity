@@ -1,29 +1,29 @@
-import Web3Utils from "@/utils/web3";
-import { Keypair, Transaction } from "@solana/web3.js";
-import { translateAddress } from "@coral-xyz/anchor";
-import { NextRequest } from "next/server";
+import Web3Utils from '@/utils/web3';
+import { Keypair, Transaction } from '@solana/web3.js';
+import { translateAddress } from '@coral-xyz/anchor';
+import { NextRequest } from 'next/server';
+import { getAIConfig } from '@/lib/ai';
 
 async function uploadFileWithRetry(
   file: File,
   apiKey: string,
-  maxRetries = 10
+  maxRetries = 10,
 ): Promise<string> {
   const formData = new FormData();
-  formData.append("file", file);
+  formData.append('file', file);
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const response = await fetch(
-        "https://api.elwyn.ai/gateway/ai/assessment/upload-file",
-        {
-          method: "POST",
-          headers: {
-            "X-AI_TOKEN": apiKey,
-            "X-REQUEST_FROM": "AI_TOKEN",
-          },
-          body: formData,
-        }
-      );
+      const { baseUrl } = getAIConfig();
+
+      const response = await fetch(`${baseUrl}/assessment/upload-file`, {
+        method: 'POST',
+        headers: {
+          'X-AI_TOKEN': apiKey,
+          'X-REQUEST_FROM': 'AI_TOKEN',
+        },
+        body: formData,
+      });
 
       if (!response.ok)
         throw new Error(`Upload failed (status ${response.status})`);
@@ -33,22 +33,22 @@ async function uploadFileWithRetry(
     } catch (err) {
       console.warn(
         `Attempt ${attempt} failed for file: ${file.name}. Error:`,
-        err
+        err,
       );
       if (attempt === maxRetries)
         throw new Error(
-          `Failed to upload ${file.name} after ${maxRetries} attempts`
+          `Failed to upload ${file.name} after ${maxRetries} attempts`,
         );
       await new Promise((res) => setTimeout(res, 500 * attempt));
     }
   }
 
-  throw new Error("Unexpected error"); // fallback
+  throw new Error('Unexpected error'); // fallback
 }
 
 async function uploadAllFiles(
   files: File[],
-  apiKey: string
+  apiKey: string,
 ): Promise<string[]> {
   const uploadPromises = files.map((file) => uploadFileWithRetry(file, apiKey));
   return Promise.all(uploadPromises);
@@ -56,24 +56,24 @@ async function uploadAllFiles(
 
 export async function POST(req: NextRequest) {
   const body = await req.formData();
-  const pubkey = body.get("pubkey") as string;
-  const files = body.getAll("fragments") as File[];
+  const pubkey = body.get('pubkey') as string;
+  const files = body.getAll('fragments') as File[];
   const randomWallet = await Keypair.generate();
-  const apiKey = process.env.ELWYN_API_KEY!;
+  const apiKey = process.env.NEXT_PUBLIC_AI_KEY!;
 
   if (!pubkey) {
     return new Response(
       JSON.stringify({
         error: true,
-        message: "Pubkey is required!",
+        message: 'Pubkey is required!',
         data: null,
       }),
       {
         status: 400,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
   }
 
@@ -111,8 +111,8 @@ export async function POST(req: NextRequest) {
       .getProgram()
       .methods.createRelic(
         relicCount,
-        body.get("name") as string,
-        body.get("description") as string
+        body.get('name') as string,
+        body.get('description') as string,
       )
       .accounts({
         signer: pubkey,
@@ -140,13 +140,13 @@ export async function POST(req: NextRequest) {
           .methods.mAddFragment(
             relicCount,
             relicCount,
-            Array.from(Buffer.from(uuid.slice(0, 32).padEnd(32), "utf-8"))
+            Array.from(Buffer.from(uuid.slice(0, 32).padEnd(32), 'utf-8')),
           )
           .accounts({
             signer: pubkey,
           })
-          .instruction()
-      )
+          .instruction(),
+      ),
     );
 
     tx.add(...(await fragments));
@@ -161,22 +161,22 @@ export async function POST(req: NextRequest) {
     return new Response(
       JSON.stringify({
         error: false,
-        message: "Relic created successfully!",
+        message: 'Relic created successfully!',
         data: {
-          name: body.get("name"),
-          description: body.get("description"),
+          name: body.get('name'),
+          description: body.get('description'),
           fragments: uuids,
           txData: tx
             .serialize({ requireAllSignatures: false })
-            .toString("base64"),
+            .toString('base64'),
         },
       }),
       {
         status: 200,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
   } catch (error) {
     return new Response(
@@ -188,9 +188,9 @@ export async function POST(req: NextRequest) {
       {
         status: 500,
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
   }
 }

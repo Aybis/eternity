@@ -53,7 +53,7 @@ export default function Howitwork() {
           </h4>
           <p className="text-base sm:text-lg font-medium leading-relaxed text-zinc-500">
             {
-              "Watch as our AI creates your digital twin 'Elwyn' that preserves your personality and wisdom."
+              "Watch as our AI creates your digital twin 'Engram' that preserves your personality and wisdom."
             }
           </p>
         </div>

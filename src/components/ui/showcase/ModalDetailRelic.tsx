@@ -1,63 +1,6 @@
+import { DetailDescription, Scenario } from '@/interface/scenario';
 import Image from 'next/image';
 import React from 'react';
-
-interface DetailDescription {
-  Categories: string;
-  SubCategories: string;
-  characterChallengesAndGrowthAreas: string;
-  charactersAge: string;
-  charactersAgreeableness: string;
-  charactersAppearance: string;
-  charactersBackground: string;
-  charactersConscientiousness: string;
-  charactersEnneagramType: string;
-  charactersExtraversion: string;
-  charactersGender: string;
-  charactersLanguage: string;
-  charactersMbtiType: string;
-  charactersMotiivationsandGoals: string;
-  charactersName: string;
-  charactersNeuroticism: string;
-  charactersOccupation: string;
-  charactersOpenness: string;
-  charactersRelevanceToScenario: string;
-  charactersScenarioSnippet: string;
-  charactersSkillsAndAbilities: string;
-  scenarioBackground: string;
-  scenarioDetails: {
-    'Achievement Badges': string[];
-    'Assessment Milestones': string;
-    'Character Memory': string;
-    'Difficulty Level': string;
-    Guidelines: string;
-    'Interaction Phase': string;
-    'Interaction Rules': string;
-    'Interactive Elements': string;
-    'Key Challenges': string;
-    'Learner Profile': string;
-    'Learning Objectives': string;
-    'Main Quest': string;
-    'Other Relevant Information': string;
-    Overview: string;
-    "Participant's Character Role": string;
-    'Persona (NPC Character)': string;
-    'Response Guide': string;
-    'Side Quest': string;
-    'Time Limit': string;
-    'Win/Lose Conditions': string;
-  };
-}
-
-interface Scenario {
-  id: string;
-  name: string;
-  description: string;
-  timestamp: string;
-  organization_id: string;
-  user_id: string;
-  soft_delete: boolean;
-  visibility: boolean;
-}
 
 export default function ModalDetailRelic({
   selectedScenario,
@@ -70,21 +13,32 @@ export default function ModalDetailRelic({
 }) {
   return (
     <div
-      className="fixed inset-0 bg-black/70 z-50"
+      className="fixed inset-0 bg-zinc-900/70 backdrop-blur-sm z-50 overflow-hidden"
       onClick={() => setSelectedScenario(null)}
     >
       <div className="flex items-center justify-center h-screen ">
-        <div className="max-w-6xl bg-zinc-900 rounded-lg shadow-lg p-6">
+        <div className="max-w-6xl bg-zinc-900 rounded-xl shadow-lg p-6">
           {/* Heading  */}
           <div className="flex justify-between items-center text-sm border border-zinc-800 rounded-full p-2 bg-zinc-800">
             {/* Icon Solana */}
-            <p>Icon</p>
+            <div className="flex items-center gap-x-2">
+              <Image
+                src={'assets/coin.svg'}
+                alt="solana"
+                className="w-6 h-6"
+                width={30}
+                height={30}
+              />
+              <p className="text-lg font-medium">30</p>
+            </div>
             {/* Title */}
-            <p className="font-bold text-white italic">
+            <p className="font-bold text-center text-white italic">
               You need 10 credits to start a roleplay session.
             </p>
             {/* Button Purchase */}
-            <button>Purchase</button>
+            <button className="bg-purple-500 text-white font-medium px-4 py-2 rounded-full">
+              Purchase more credits
+            </button>
           </div>
 
           {/* AI Scenario */}
@@ -93,8 +47,8 @@ export default function ModalDetailRelic({
               src={`https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
               alt="character"
               className="w-32 h-32 object-cover rounded-md"
-              width={40}
-              height={40}
+              width={200}
+              height={200}
             />
             <div className="flex flex-col gap-y-1.5">
               <h2 className="text-xl font-semibold">
