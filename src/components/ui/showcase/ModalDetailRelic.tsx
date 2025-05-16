@@ -4,20 +4,25 @@ import React from 'react';
 
 export default function ModalDetailRelic({
   selectedScenario,
-  setSelectedScenario,
   detailDescription,
+  setShowRoleplayModal,
+  setshowModalDescription,
 }: {
   selectedScenario: Scenario | null;
-  setSelectedScenario: React.Dispatch<React.SetStateAction<Scenario | null>>;
   detailDescription: DetailDescription | null;
+  setShowRoleplayModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setshowModalDescription: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
     <div
       className="fixed inset-0 bg-zinc-900/70 backdrop-blur-sm z-50 overflow-hidden"
-      onClick={() => setSelectedScenario(null)}
+      onClick={() => setshowModalDescription(false)}
     >
-      <div className="flex items-center justify-center h-screen ">
-        <div className="max-w-6xl bg-zinc-200 dark:bg-zinc-900 rounded-xl shadow-lg p-6">
+      <div className="flex items-center justify-center h-screen">
+        <div
+          className="max-w-6xl bg-zinc-200 dark:bg-zinc-900 rounded-xl shadow-lg p-6"
+          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+        >
           {/* Heading  */}
           <div className="flex justify-between items-center text-sm border border-zinc-200 dark:border-zinc-800 rounded-full p-2 dark:bg-zinc-800 bg-zinc-300">
             {/* Icon Solana */}
@@ -95,6 +100,18 @@ export default function ModalDetailRelic({
                 </span>
               </p>
             </div>
+          </div>
+
+          {/* Setup  */}
+          <div className="flex justify-end items-center p-4">
+            <button
+              onClick={() => {
+                setShowRoleplayModal(true);
+              }}
+              className="px-4 py-2 cursor-pointer rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition duration-300 ease-in-out font-medium"
+            >
+              Go to setup
+            </button>
           </div>
         </div>
       </div>

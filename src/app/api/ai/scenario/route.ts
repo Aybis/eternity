@@ -13,49 +13,57 @@ const { baseUrl, headers } = getAIConfig();
  * - `scenario_description` (string): Description of the scenario.
  * - `organization_id` (string): Organization ID.
  *
- * Returns the response from the external API or an error message.
+ * Returns a 202 Accepted status immediately while processing the scenario creation in background.
  */
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
+  const body = await req.json();
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('Incoming AI scenario request:', body);
-    }
-    const response = await fetch(
-      `${baseUrl}/assessment/live/scenarios/quick-create`,
-      {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          scenario_title: body.scenario_title,
-          ai_role: body.ai_role,
-          my_role: body.my_role,
-          scenario_description: body.scenario_description,
-          organization_id: body.organization_id,
-        }),
-      },
-    );
-
-    console.log(response, '<< aiRes');
-
-    const data = await response.json();
-    console.log(data, '<< data');
-
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('AI API response:', data);
-    }
-
-    return NextResponse.json(data, { status: response.status });
-  } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('AI scenario creation error:', error);
-    }
-    return NextResponse.json(
-      { error: 'Failed to create scenario', details: error },
-      { status: 500 },
-    );
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('Incoming AI scenario request:', body);
   }
+
+  // Start async operation in the background
+  void (async () => {
+    try {
+      const response = await fetch(
+        `${baseUrl}/assessment/live/scenarios/quick-create`,
+        {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            scenario_title: body.scenario_title,
+            ai_role: body.ai_role,
+            my_role: body.my_role,
+            scenario_description: body.scenario_description,
+            organization_id: body.organization_id,
+          }),
+        },
+      );
+
+      const data = await response.json();
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('AI API response (background):', data);
+      }
+      if (!response.ok) {
+        throw new Error(`Error: ${data.error}`);
+      }
+      return NextResponse.json(
+        { status: 'success', message: 'Scenario created successfully' },
+        { status: 201 },
+      );
+    } catch (error) {
+      console.error('AI scenario background creation error:', error);
+      return NextResponse.json(
+        { error: 'Failed to create scenario', details: error },
+        { status: 500 },
+      );
+    }
+  })();
+
+  return NextResponse.json(
+    { status: 'processing', message: 'Scenario is being created' },
+    { status: 202 },
+  );
 }
 
 /**

@@ -1,14 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import ModalDone from '@/components/ui/showcase/ModalDone';
+import ModalProgress from '@/components/ui/showcase/ModalProgress';
+import RenderIf from '@/utils/RenderIf';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
   const [showLoadingModal, setShowLoadingModal] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(true);
-
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [error, seterror] = useState(false);
   const [scenarioTitle, setScenarioTitle] = useState('');
   const [myRole, setMyRole] = useState('');
   const [aiRole, setAiRole] = useState('');
@@ -44,7 +46,8 @@ export default function Page() {
       return data;
     } catch (err) {
       console.error(err, '<<< error');
-      alert('Failed to create persona. Please try again.');
+      // alert('Failed to create persona. Please try again.');
+      seterror(true);
       setShowLoadingModal(false);
     } finally {
       setLoading(false);
@@ -159,68 +162,34 @@ export default function Page() {
       {/* End Form Section */}
 
       {/* Modal Loading Section */}
-      {showLoadingModal && (
-        <div className="fixed inset-0 z-50 dark:bg-zinc-900/50  backdrop-blur-sm flex items-center justify-center">
-          <div className="fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 bg-black dark:bg-background p-6 shadow-lg sm:rounded-lg md:w-full w-full max-w-3xl overflow-y-auto max-h-[95vh]">
-            <div className="flex flex-col mx-auto justify-center items-center gap-4">
-              <Image
-                className="w-full h-64"
-                width={1241}
-                height={619}
-                src={'/assets/prepare.gif'}
-                alt="Preparing your persona"
-              />
-              <div className="font-bold text-md text-zinc-100 dark:text-white">
-                This process will take about 1 to 2 minutes
-              </div>
-              <div className="font-light text-sm text-zinc-200 dark:text-gray-300">
-                {
-                  "If you don't want to wait, you can close this, and we will notify you when it’s done"
-                }
-              </div>
-              <button
-                type="button"
-                className="bg-zinc-700 cursor-pointer hover:bg-zinc-600 text-white px-4 py-2 rounded-full"
-                onClick={() => setShowLoadingModal(false)}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-      {/* End Modal Section */}
+      <RenderIf condition={showLoadingModal}>
+        <ModalProgress setShowLoadingModal={setShowLoadingModal} />
+      </RenderIf>
 
       {/* Modal Success */}
-      {showSuccessModal && (
-        <div className="fixed inset-0 z-50 bg-zinc-900/50  backdrop-blur-sm flex items-center justify-center">
-          <div className="fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 bg-white dark:bg-background p-6 shadow-lg sm:rounded-lg md:w-full w-full max-w-3xl overflow-y-auto max-h-[95vh]">
-            <div className="flex flex-col mx-auto justify-center items-center gap-4">
-              <Image
-                className="w-full h-64"
-                width={1241}
-                height={619}
-                src={'/assets/check.svg'}
-                alt="Persona created successfully!"
-              />
-              <div className="font-bold text-md text-gray-900 dark:text-white">
-                Persona created successfully!
-              </div>
-              <div className="font-light text-sm text-gray-600 dark:text-gray-300">
-                Your persona has been created. You can view it in the showcase.
-              </div>
-              <button
-                type="button"
-                className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-4 py-2 rounded-full"
-                onClick={() => setShowSuccessModal(false)}
-              >
-                Close
-              </button>
-            </div>
+      <RenderIf condition={showSuccessModal}>
+        <ModalDone setShowSuccessModal={setShowSuccessModal} />
+      </RenderIf>
+
+      {/* Modal Error  */}
+      <RenderIf condition={error}>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50  z-50">
+          <div className="bg-zinc-100 dark:bg-zinc-800 rounded-lg shadow-lg p-6 max-w-sm w-full">
+            <h3 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-4">
+              Error
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+              Failed to create persona. Please try again.
+            </p>
+            <button
+              onClick={() => seterror(false)}
+              className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+            >
+              Close
+            </button>
           </div>
         </div>
-      )}
-      {/* End Modal Success  */}
+      </RenderIf>
     </div>
   );
 }
