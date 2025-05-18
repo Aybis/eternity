@@ -19,7 +19,7 @@
     "namespace": "android_app",
     "package_name": "id.astra.udso.udforce.dev",
     "sha256_cert_fingerprints": [
-      "90:19:73:39:CC:AD:42:ED:B5:F8:49:A2:EB:1E:D2:E1:FE:52:E7:4C:0C:CB:D2:14:AC:C7:01:20:2C:AD:1E:2D"
+      "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
     ]
   }
  },
@@ -31,7 +31,7 @@
     "namespace": "android_app",
     "package_name": "id.astra.udso.udforce.prodlike",
     "sha256_cert_fingerprints": [
-      "90:19:73:39:CC:AD:42:ED:B5:F8:49:A2:EB:1E:D2:E1:FE:52:E7:4C:0C:CB:D2:14:AC:C7:01:20:2C:AD:1E:2D"
+      "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
     ]
   }
  },
@@ -43,7 +43,7 @@
     "namespace": "android_app",
     "package_name": "id.astra.udso.mobileservice.dev",
     "sha256_cert_fingerprints": [
-      "90:19:73:39:CC:AD:42:ED:B5:F8:49:A2:EB:1E:D2:E1:FE:52:E7:4C:0C:CB:D2:14:AC:C7:01:20:2C:AD:1E:2D"
+      "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
     ]
   }
  },
@@ -55,7 +55,7 @@
     "namespace": "android_app",
     "package_name": "id.astra.udso.mobileservice.prodlike",
     "sha256_cert_fingerprints": [
-      "90:19:73:39:CC:AD:42:ED:B5:F8:49:A2:EB:1E:D2:E1:FE:52:E7:4C:0C:CB:D2:14:AC:C7:01:20:2C:AD:1E:2D"
+      "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
     ]
   }
  }
