@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { getAIConfig } from '@/lib/ai';
+import { NextResponse } from 'next/server';
 
 const { baseUrl, headers } = getAIConfig();
 
 export async function GET(
-  req: NextRequest,
-  context: { params: { id: string } },
+  req: Request,
+  { params }: { params: { id: string } },
 ) {
-  const scenarioId = context.params.id;
+  const scenarioId = params.id;
 
   if (!scenarioId) {
     return NextResponse.json(

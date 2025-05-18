@@ -49,7 +49,7 @@ export default function ScenarioInteractionPage() {
         const { headers } = getAIConfig();
 
         const sttRes = await fetch(
-          `https://elwyn.ai/api/stt?model=whisper-large-v3&language=en&prompt=`,
+          `${process.env.NEXT_PUBLIC_URL_AI}/stt?model=whisper-large-v3&language=en&prompt=`,
           {
             method: 'POST',
             headers,
